@@ -5,7 +5,7 @@ import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
 import { cn } from "./utils";
 
-function ScrollArea({
+export function ScrollArea({
   className,
   children,
   ...props
@@ -22,7 +22,12 @@ function ScrollArea({
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
-      <ScrollBar />
+      <ScrollAreaPrimitive.Scrollbar
+        data-slot="scroll-area-scrollbar"
+        orientation="vertical"
+      >
+        <ScrollAreaPrimitive.Thumb />
+      </ScrollAreaPrimitive.Scrollbar>
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
   );

@@ -120,7 +120,7 @@ export function HomePage() {
             >
               <div className="aspect-[16/9] md:aspect-[21/9] bg-gray-100 border-2 border-black/20 overflow-hidden">
                 <ImageWithFallback
-                  src="/public/images/main.jpeg"
+                  src="/images/main.jpeg"
                   alt="Historical photograph"
                   className="w-full h-full object-cover grayscale"
                 />

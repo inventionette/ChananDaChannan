@@ -58,24 +58,24 @@ const biographies: BiographyData[] = [
     chapters: [
       {
         title: "Early Life",
-        heroImage: "./public/images/biography1/earlylifemic.jpg",
+        heroImage: "./public/image/biography1/germany.jpg",
         heroParagraph: loremMed1,
         photos: [
-          { url: "./public/images/biography1/earlylife4.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/redo.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/earlylife3.jpg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/earlylife4.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/redo.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/earlylife3.jpg", alt: "Description of image", caption: "Description" },
         ],
         bodyParagraph: loremBody1,
         closingParagraph: loremClose1,
       },
       {
         title: "Activism",
-        heroImage: "./public/images/biography1/tajmahal.jpg",
+        heroImage: "./public/image/biography1/tajmahal.jpg",
         heroParagraph: loremMed2,
         photos: [
-          { url: "./public/images/biography1/activism1.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/activism2.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/activism3.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/activism1.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/activism2.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/activism3.jpeg", alt: "Description of image", caption: "Description" },
         ],
         bodyParagraph: loremBody2,
         testimonial: {
@@ -87,11 +87,11 @@ const biographies: BiographyData[] = [
       {
         title: "1980s",
         heroParagraph: loremMed3,
-        heroImage: "./public/images/biography1/main.jpeg",
+        heroImage: "./public/image/biography1/main.jpeg",
         photos: [
-          { url: "./public/images/biography1/1980s.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/1980s2.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/1980s3.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/1980s.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/1980s2.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/1980s3.jpeg", alt: "Description of image", caption: "Description" },
         ],
         bodyParagraph: loremBody3,
         testimonial: {
@@ -104,11 +104,11 @@ const biographies: BiographyData[] = [
       {
         title: "Legacy",
         heroParagraph: loremMed4,
-        heroImage: "./public/images/biography1/creamation.jpeg",
+        heroImage: "./public/image/biography1/creamation.jpeg",
         photos: [
-          { url: "./public/images/biography1/legacy.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/legacy3.jpeg", alt: "Description of image", caption: "Description" },
-          { url: "./public/images/biography1/legacy2.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/legacy.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/legacy3.jpeg", alt: "Description of image", caption: "Description" },
+          { url: "./public/image/biography1/legacy2.jpeg", alt: "Description of image", caption: "Description" },
         ],
         bodyParagraph: loremBody4,
         testimonial: {

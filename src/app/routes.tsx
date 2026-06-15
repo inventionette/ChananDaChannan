@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { RootLayout } from "./components/RootLayout";
 import { HomePage } from "./components/HomePage";
 import { ScholarshipPage } from "./components/ScholarshipPage";
@@ -6,7 +6,7 @@ import { ApplicationPage } from "./components/ApplicationPage";
 import { BiographyPage } from "./components/BiographyPage";
 import { AboutPage } from "./components/AboutPage";
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   [
     {
       path: "/",
@@ -21,6 +21,5 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/ChananDaChannan",
   }
 );

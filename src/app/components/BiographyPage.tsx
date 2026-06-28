@@ -90,10 +90,10 @@ const biographies: BiographyData[] = [
         ],
         secondCarouselImages: [
           { url: BASE + "/image/biography1/g1.jpg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/g2.jpg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/g3.jpeg", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/g2.png", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/g3.png", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/g4.jpeg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/g5.jpeg", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/g5.png", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/g6.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/g7.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/g8.jpg", alt: "Description of image", caption: "Description" },
@@ -115,9 +115,9 @@ const biographies: BiographyData[] = [
         heroParagraph: loremMed2,
         carouselImages: [
           { url: BASE + "/image/biography1/a2.jpg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/a3.jpg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/a4.jpg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/a5.JPEG", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/fixedact.png", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/fixedact2.png", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/fixedact3.png", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/a6.JPEG", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/a7.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/a8.jpeg", alt: "Description of image", caption: "Description" },
@@ -183,7 +183,7 @@ const biographies: BiographyData[] = [
         closingParagraph: loremClose4,
       },
     ],
-  },
+  }
 ];
 
 function TestimonialBlock({ quote, attribution }: { quote: string; attribution: string }) {

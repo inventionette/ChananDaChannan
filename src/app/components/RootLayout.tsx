@@ -18,6 +18,7 @@ export function RootLayout() {
   }, [location.pathname]);
 
   const navLinks = [
+    { to: "/gallery", label: t("gallery") },
     { to: "/about", label: t("nav.about") },
     { to: "/scholarship", label: t("nav.scholarship") },
     { to: "/apply", label: t("nav.apply") },
@@ -40,12 +41,15 @@ export function RootLayout() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="sticky top-0 z-50 bg-white border-b border-black/10 backdrop-blur-sm bg-white/95 shadow-sm"
       >
-        <nav className="container mx-auto px-4 md:px-6 lg:px-12 py-4 md:py-6">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+          
+          
+          
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
-            <Link to="/" className="group">
+            <Link to="/" className="group flex-shrink-0">
               <motion.h1
-                className="text-3xl tracking-tight hover:tracking-wide transition-all duration-300"
+                className="text-xl lg:text-2xl tracking-tight hover:tracking-wide transition-all duration-300"
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
                 }}
@@ -56,7 +60,15 @@ export function RootLayout() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex flex-1 items-center justify-center gap-8 lg:gap-10 xl:gap-12">
+              <div className="hidden md:flex ml-10">
+ 
+</div>
+
+
+
+
+
               {/* Biography Dropdown */}
               <div
                 className="relative"

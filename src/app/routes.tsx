@@ -6,6 +6,7 @@ import { ApplicationPage } from "./components/ApplicationPage";
 import { BiographyPage } from "./components/BiographyPage";
 import { AboutPage } from "./components/AboutPage";
 import { GalleryPage } from "./components/GalleryPage";
+import { ContactPage } from "./components/ContactPage";
 
 export const router = createHashRouter(
   [
@@ -18,7 +19,8 @@ export const router = createHashRouter(
         { path: "biography/:id", Component: BiographyPage },
         { path: "gallery", Component: GalleryPage },
         { path: "scholarship", Component: ScholarshipPage },
-        { path: "apply", Component: ApplicationPage },
+                { path: "contact", Component: ContactPage },
+                { path: "apply", Component: ApplicationPage },
       ],
     },
   ],

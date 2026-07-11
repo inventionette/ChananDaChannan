@@ -56,7 +56,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Scholarship Page
     'scholarship.title': 'Scholarship Program',
     'scholarship.subtitle': 'Investing in exceptional students who will shape tomorrow',
-    'scholarship.aboutProgram': 'About the Program',
+    'scholarship.aboutProgram': 'About Program',
     'scholarship.eligibility': 'Eligibility & Requirements',
     'scholarship.applicationProcess': 'Application Process',
     'scholarship.supportMission': 'Support Our Mission',

@@ -47,19 +47,18 @@ const loremClose4 = "Each of us has a role to play. Comrade Gurmail Singh Hunjan
 
 const loremBody6 = "He was killed early in the morning on the village outskirts while going to relieve himself, a routine practice in Punjab. Despite threats, he refused to build a personal toilet, believing it would be seen as a misuse of public funds, demonstrating his firm ethics and strong moral stand against corruption. He truly lived by the saying, “Caesar's wife should not only be honest, but must also appear to be”. His death shocked the region. Thousands attended his funeral. At the ceremony, his father, Comrade Chanan Singh Barola, said:";
 
+
 interface Chapter {
   title: string;
   heroParagraph: string;
-  heroImage?: string; // Made optional for sections without hero image
+  heroImage?: string;
   carouselImages: { url: string; alt: string; caption: string; year?: string }[];
   secondCarouselImages?: { url: string; alt: string; caption: string; year?: string }[];
   secondCarouselTitle?: string;
   bodyParagraph: string;
   testimonial?: { quote: string; attribution: string };
-  // For 1980s Punjab subsection
   subsectionTitle?: string;
   subsectionParagraphs?: string[];
-  // For Legacy subsection
   legacyParagraphs?: string[];
   closingParagraph: string;
 }
@@ -106,6 +105,7 @@ const biographies: BiographyData[] = [
           { url: BASE + "/image/biography1/g15.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/g16.jpg", alt: "Description of image", caption: "Description" },
         ],
+        secondCarouselTitle: "Germany",
         bodyParagraph: loremBody1,
         closingParagraph: loremClose1,
       },
@@ -147,7 +147,6 @@ const biographies: BiographyData[] = [
           { url: BASE + "/image/biography1/l9.jpeg", alt: "Description of image", caption: "Description" },
         ],
         bodyParagraph: loremBody3,
-        // ✅ NEW: 1980s Punjab subsection
         subsectionTitle: "1980s Punjab",
         subsectionParagraphs: [lorem1980sPunjab1, lorem1980sPunjab2],
         closingParagraph: loremClosewhat,
@@ -171,7 +170,6 @@ const biographies: BiographyData[] = [
           quote: "“Gurmail was a hero — giver, devotee, and warrior — all three live forever. He was born of the people, lived for the people, and became a martyr for the people.”",
           attribution: "Comrade Chanan Singh Barola, father of Comrade Gurmail Singh Hunjan"
         },
-        // ✅ NEW: Legacy subsection with 6 paragraphs
         legacyParagraphs: [
           loremLegacy1,
           loremLegacy2,
@@ -342,14 +340,14 @@ export function BiographyPage() {
                 </div>
               </div>
 
-              {/* FIRST CAROUSEL */}
+              {/* FIRST CAROUSEL - Manual navigation only (autoplay disabled) */}
               <div className="px-4 md:px-6 lg:px-12">
-                <div className="container mx-auto max-w-5xl">
+                <div className="container mx-auto max-w-4xl">
                   {chapter.carouselImages && chapter.carouselImages.length > 0 && (
                     <ImageCarousel 
                       images={chapter.carouselImages} 
-                      autoplayInterval={5000}
-                      className="max-w-5xl"
+                      autoplayInterval={0}
+                      className="max-w-4xl"
                     />
                   )}
                 </div>
@@ -367,34 +365,46 @@ export function BiographyPage() {
                 </div>
               </div>
 
-              {/* SECOND CAROUSEL - Only for sections that have it */}
+              {/* SECOND CAROUSEL - Manual navigation only */}
               {chapter.secondCarouselImages && chapter.secondCarouselImages.length > 0 && (
                 <div className="px-4 md:px-6 lg:px-12 mt-10">
-                  <div className="container mx-auto max-w-5xl">
+                  <div className="container mx-auto max-w-4xl">
                     {chapter.secondCarouselTitle && (
-                      <h3 
-                        className="text-xl md:text-2xl mb-6 text-center"
-                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                      >
-                        {chapter.secondCarouselTitle}
-                      </h3>
-                    )}
+                                          <div>
+                                            <div className="w-full h-px bg-black/25 mb-6 md:mb-8" />
+                                            <h2
+                                              className="leading-none mb-6"
+                                              style={{
+                                                fontFamily: "'Cormorant Garamond', serif",
+                                                fontSize: "clamp(3rem, 9vw, 6.5rem)",
+                                                letterSpacing: "-0.01em",
+                                              }}
+                                            >
+                                              {chapter.secondCarouselTitle}
+                                            </h2>
+                                          </div>
+                                        )}
                     <ImageCarousel 
                       images={chapter.secondCarouselImages} 
-                      autoplayInterval={5000}
-                      className="max-w-5xl"
+                      autoplayInterval={0}
+                      className="max-w-4xl"
                     />
                   </div>
                 </div>
               )}
 
-              {/* ✅ NEW: 1980s Punjab subsection */}
+              {/* 1980s Punjab Subsection - with divider and matching heading style */}
               {chapter.subsectionTitle && chapter.subsectionParagraphs && (
-                <div className="px-4 md:px-6 lg:px-12 mt-8">
+                <div className="px-4 md:px-6 lg:px-12 mt-14 md:mt-20">
                   <div className="container mx-auto max-w-5xl">
+                    <div className="w-full h-px bg-black/25 mb-6 md:mb-8" />
                     <h3 
-                      className="text-2xl md:text-3xl mb-6"
-                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                      className="leading-none mb-6"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                        letterSpacing: "-0.01em",
+                      }}
                     >
                       {chapter.subsectionTitle}
                     </h3>
@@ -423,13 +433,18 @@ export function BiographyPage() {
                 </div>
               )}
 
-              {/* ✅ NEW: Legacy subsection with 6 paragraphs */}
+              {/* Legacy Subsection - with divider and matching heading style */}
               {chapter.legacyParagraphs && (
-                <div className="px-4 md:px-6 lg:px-12 mt-8">
+                <div className="px-4 md:px-6 lg:px-12 mt-14 md:mt-20">
                   <div className="container mx-auto max-w-5xl">
+                    <div className="w-full h-px bg-black/25 mb-6 md:mb-8" />
                     <h3 
-                      className="text-2xl md:text-3xl mb-6"
-                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                      className="leading-none mb-6"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                        letterSpacing: "-0.01em",
+                      }}
                     >
                       Legacy
                     </h3>

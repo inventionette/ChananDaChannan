@@ -12,8 +12,8 @@ export interface GalleryImage {
 
 interface ImageCarouselProps {
   images: GalleryImage[];
-  autoplayInterval?: number; // Optional: customize autoplay speed (default: 5000ms)
-  className?: string; // Optional: add custom className for styling
+  autoplayInterval?: number; // Set to 0 to disable autoplay
+  className?: string;
 }
 
 export function ImageCarousel({ 
@@ -39,27 +39,50 @@ export function ImageCarousel({
 
   // Reset autoplay on manual interaction
   const resetAutoplay = useCallback(() => {
-    if (autoplayRef.current) clearInterval(autoplayRef.current);
-    autoplayRef.current = setInterval(() => {
-      setDirection(1);
-      setCurrent((c) => (c + 1) % images.length);
-    }, autoplayInterval);
+    // Clear existing interval
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+    
+    // Only set up autoplay if interval is greater than 0
+    if (autoplayInterval > 0) {
+      autoplayRef.current = setInterval(() => {
+        setDirection(1);
+        setCurrent((c) => (c + 1) % images.length);
+      }, autoplayInterval);
+    }
   }, [images.length, autoplayInterval]);
 
   useEffect(() => {
     resetAutoplay();
     return () => {
-      if (autoplayRef.current) clearInterval(autoplayRef.current);
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
+      }
     };
   }, [resetAutoplay]);
 
-  const handlePrev = () => { prev(); resetAutoplay(); };
-  const handleNext = () => { next(); resetAutoplay(); };
-  const handleDot = (i: number) => { go(i); resetAutoplay(); };
+  const handlePrev = () => { 
+    prev(); 
+    if (autoplayInterval > 0) resetAutoplay(); 
+  };
+  
+  const handleNext = () => { 
+    next(); 
+    if (autoplayInterval > 0) resetAutoplay(); 
+  };
+  
+  const handleDot = (i: number) => { 
+    go(i); 
+    if (autoplayInterval > 0) resetAutoplay(); 
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
+  
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
@@ -77,10 +100,10 @@ export function ImageCarousel({
 
   return (
     <div className={`w-full max-w-3xl mx-auto select-none ${className}`}>
-      {/* Slide container */}
+      {/* Slide container - Changed aspect ratio to 4:5 for square/portrait images */}
       <div
         className="relative overflow-hidden bg-gray-100 border border-black/15 shadow-md"
-        style={{ aspectRatio: "16/9" }}
+        style={{ aspectRatio: "7/6" }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >

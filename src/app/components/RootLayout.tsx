@@ -22,7 +22,7 @@ export function RootLayout() {
 
   // Updated navLinks - removed apply, about moved to end
   const navLinks = [
-    { to: "/gallery", label: t("gallery") },
+    { to: "/gallery", label: language === "en" ? "Gallery" : "ਯਾਦਾਂ" },
     { to: "/scholarship", label: t("nav.scholarship") },
     { to: "/about", label: t("nav.about") }, // About moved to the end
   ];
@@ -60,7 +60,7 @@ export function RootLayout() {
                 }}
                 whileHover={{ scale: 1.02 }}
               >
-                Chanan Da Chaanan{" "}
+                {language === "en" ? "Chanan Da Chaanan" : t("site.brand")}{" "}
               </motion.h1>
             </Link>
 
@@ -222,7 +222,7 @@ export function RootLayout() {
                 }}
               >
                 <span className="uppercase tracking-wider text-sm font-medium transition-colors duration-300 group-hover:text-gray-600">
-                  Contact
+                  {t("common.contact")}
                 </span>
                 {location.pathname === "/contact" && (
                   <motion.div
@@ -247,7 +247,7 @@ export function RootLayout() {
                 aria-label="Toggle language"
               >
                 <Languages className="w-3 h-3" />
-                {language === "en" ? "ਪੰ" : "EN"}
+                {language === "en" ? "PA" : "EN"}
               </button>
             </div>
 
@@ -444,7 +444,7 @@ export function RootLayout() {
                       className="block text-lg uppercase tracking-wider font-medium hover:text-gray-600 transition-colors py-2"
                       style={{ fontFamily: "'Work Sans', sans-serif" }}
                     >
-                      Contact
+                      {t("common.contact")}
                     </Link>
                     <div className="h-px bg-black/10"></div>
                   </motion.div>
@@ -463,7 +463,7 @@ export function RootLayout() {
                       aria-label="Toggle language"
                     >
                       <Languages className="w-4 h-4" />
-                      {language === "en" ? "Switch to ਪੰਜਾਬੀ" : "Switch to English"}
+                      {language === "en" ? "Switch to Punjabi" : "Switch to English"}
                     </button>
                   </motion.div>
                 </div>

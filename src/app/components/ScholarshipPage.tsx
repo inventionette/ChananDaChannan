@@ -88,8 +88,11 @@ export function ScholarshipPage() {
                 fontSize: "clamp(2.5rem, 5vw, 4rem)",
               }}
             >
-              Scholarship{" "}
-              <span className="italic">Program</span>
+              {language === "en" ? (
+                <>Scholarship <span className="italic">Program</span></>
+              ) : (
+                <>{'ਵਜੀਫਾ'} <span className="italic">ਪ੍ਰੋਗਰਾਮ</span></>
+              )}
             </h1>
             <div className="w-24 h-px bg-white/30 mx-auto mb-4"></div>
             <p
@@ -121,7 +124,11 @@ export function ScholarshipPage() {
                 fontSize: "clamp(2rem, 4vw, 3rem)",
               }}
             >
-              About the <span className="italic">Program</span>
+              {language === "en" ? (
+                <>About the <span className="italic">Program</span></>
+              ) : (
+                <>ਵਜੀਫਾ ਬਾਰੇ <span className="italic">ਜਾਣਕਾਰੀ</span></>
+              )}
             </h2>
 
             <div

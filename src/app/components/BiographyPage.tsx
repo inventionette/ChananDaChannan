@@ -4,10 +4,11 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useTranslation } from "../context/TranslationContext";
 
 const BASE = "/ChananDaChannan/";
 
-const loremMed1 = "Comrade Gurmail Singh Hunjan was born on 15 November 1951 in Pandher Kheri, Ludhiana, Punjab, India. Raised in a politically active family, his father, Comrade Chanan Singh Barola, was a respected freedom fighter who instilled in him the values of justice, equality, and commitment to working class. His mother was Jaswant Kaur. His father joined India's freedom struggle, starting with the Indian National Congress and later became a communist after meeting other revolutionaries in the prison. He often shared how Nehru's books, Glimpses of World History and The Discovery of India, shaped his views. During the partition in 1947, Comrade Barola and his friends risked their lives to help Muslim families reach Malerkotla safely. These actions revealed the secular and humanitarian values that later defined Comrade Hunjan. Comrade Hunjan began his education in Maloud and attended Government College in Malerkotla before earning a Master's in Political Science at Arya College, Ludhiana. He excelled in sports, especially Kabaddi, which drew large crowds in local tournaments. His real passion, though, was public life and activism.";
+const loremMed1 = "Comrade Gurmail Singh Hunjan was born on 15 November 1951 in Pandher Kheri, Ludhiana, Punjab, India. Raised in a politically active family, his father, Comrade Chanan Singh Barola, was a respected freedom fighter who instilled in him the values of justice, equality, and commitment to working class. His mother was Jaswant Kaur. His father joined India's freedom struggle, starting with the Indian National Congress and later became a communist after meeting other revolutionaries in the prison. He often shared how Nehru's books, Glimpses of World History and The Discovery of India, shaped his views. During the partition in 1947, Comrade Barola and his friends risked their lives to help Muslim families reach Malerkotla safely. These actions revealed the secular and humanitarian values that later defined Comrade Hunjan. Comrade Hunjan began his education in Maloud and attended Government College in Malerkotla before earning a Master's in Political Science at Arya College, Ludhiana. He excelled in sports, especially Kabaddi, which drew large crowds in local tournaments. His real passion, though, was in social and political activism.";
 
 const loremBody1 = "He soon became a regional leader of the influential All India Students' Federation (AISF). His involvement deepened in the student movement after the firing incident at the Moga Agitation in 1972 through close relationships with Comrade Kartar Singh Buwani and Comrade Bant Singh Brar. After his studies, Comrade Hunjan briefly worked at a Cooperative Bank before committing fully to the Communist Party of India (CPI). He became Assistant Secretary of the Ludhiana district unit, served on the Punjab State Council, and actively grew the All India Youth Federation (AIYF) in rural Ludhiana by engaging youth in sports and social work.";
 
@@ -24,7 +25,7 @@ const loremMed3 = "Comrade Hunjan also served as the elected village head (Sarpa
 const loremBody3 = "He focused his politics entirely on organising workers, farmers, and rural labourers across Ludhiana, especially in Ahmedgarh, Maloud, and Dehlon. He brought loaders (palledars), labourers, and farm workers into strong unions, built local committees, resolved grievances with officials, and held educational camps on their rights. His honest leadership motivated many to support the Communist Party, as they trusted him.";
 
 // NEW: 1980s Punjab subsection paragraphs
-const lorem1980sPunjab1 = "In the 1980s, as Punjab faced terrorism and extremism, Comrade Hunjan openly opposed Khalistani militancy and helped safeguard secular community ties. With comrades, he organised meetings across Ludhiana, inviting progressive voices like Comrades Satpal Dangand Jagjit Singh Anand to defend peace. The progressive slogan, 'Na Hindu Raj na Khalistan, jug jug jive Hindustan,' echoed their commitment. ";
+const lorem1980sPunjab1 = "In the 1980s, as Punjab faced terrorism and extremism, Comrade Hunjan openly opposed Khalistani militancy and helped safeguard secular community ties. With comrades, he organised meetings across Ludhiana, inviting progressive voices like Comrades Satpal Dangand Jagjit Singh Anand to defend peace. The secular and progressive slogan, 'Na Hindu Raj na Khalistan, jug jug jive Hindustan,' echoed their commitment. ";
 
 const lorem1980sPunjab2 = "Despite the dangers faced by political activists at the time, Comrade Hunjan continued to visit villages to unite people against terrorism and for peace. Dr Arun Mitra remembered him stressing that patriots had suffered greatly for India’s independence, and that preserving India’s freedom at any cost remained a vital duty for all.";
 
@@ -37,9 +38,9 @@ const loremLegacy1 = "To honour his legacy, every year on 14 May, people gather 
 
 const loremLegacy2 = "Colleagues saw Comrade Hunjan as a rare leader who stood by his principles. He insisted that political ideals must be proven through action. His tireless, honest work built a powerful grassroots movement, and his loss was deeply felt by those he inspired.";
 
-const loremLegacy3 = "His death and the violence in Punjab deeply affected his family. His wife raised their two sons through her determination and family support. They went on to succeed as engineers abroad. The family now honours Comrade Hunjan’s legacy with educational scholarships for deserving students, believing peace and education are the true way forward.";
+const loremLegacy3 = "His death and the violence in Punjab deeply affected his family. His wife raised their two sons through her determination and support of family and friends. They went on to succeed as engineers abroad. The family now honours Comrade Hunjan’s legacy with educational scholarships for deserving students, believing peace and education are the true way forward.";
 
-const loremLegacy4 = "Today, decades after his death, Comrade Hunjan’s legacy still matters. Punjab still feels the aftereffects of terrorism and extremism, and new forms of communal politics and social division threaten the country’s democratic and secular values. His life reminds us that courage and integrity can last through hard times. Ordinary people can make a difference by building inclusive communities, standing up against injustice, and keeping Hunjan's spirit alive.";
+const loremLegacy4 = "Today, decades after his death, Comrade Hunjan’s legacy still matters. Punjab still feels the aftereffects of terrorism and extremism, and new forms of communal politics and social division threaten the country’s democratic and secular values. His life reminds us that courage and integrity can last through hard times. Ordinary people can make a difference by building inclusive communities, standing up against injustice, and by keeping Hunjan's spirit alive.";
 
 const loremLegacy5 = "His fight was not only against terrorism, but also against exploitation, inequality, hatred, and injustice. Though his life ended early, his principles inspire those working for a united and peaceful society. Let us honour his memory by coming together for justice and unity, and standing up against all forces that try to divide us. Each of us has a role to play.";
 
@@ -71,6 +72,74 @@ interface BiographyData {
   years: string;
   role: string;
   chapters: Chapter[];
+}
+
+function getTranslatedBiography(biography: BiographyData, t: (key: string) => string): BiographyData {
+  return {
+    ...biography,
+    name: t("bio.hero.title"),
+    role: t("bio.hero.role"),
+    years: t("bio.hero.years"),
+    chapters: biography.chapters.map((chapter, chapterIdx) => {
+      switch (chapterIdx) {
+        case 0:
+          return {
+            ...chapter,
+            title: t("bio.chapter.earlyLife"),
+            heroParagraph: t("bio.earlyLife.paragraph1"),
+            bodyParagraph: `${t("bio.earlyLife.paragraph2")} ${t("bio.earlyLife.paragraph3")}`,
+            closingParagraph: t("bio.earlyLife.paragraph4"),
+          };
+        case 1:
+          return {
+            ...chapter,
+            title: t("bio.chapter.activism"),
+            heroParagraph: t("bio.activism.paragraph1"),
+            bodyParagraph: t("bio.activism.paragraph2"),
+            closingParagraph: "",
+            testimonial: {
+              quote: t("bio.activism.testimonial1"),
+              attribution: t("bio.activism.testimonial1.attribution"),
+            },
+          };
+        case 2:
+          return {
+            ...chapter,
+            title: t("bio.chapter.leadership"),
+            heroParagraph: t("bio.leadership.paragraph1"),
+            bodyParagraph: `${t("bio.leadership.paragraph2")} ${t("bio.leadership.paragraph3")}`,
+            subsectionTitle: t("bio.subsection.1980s.title"),
+            subsectionParagraphs: [
+              t("bio.subsection.1980s.paragraph1"),
+              t("bio.subsection.1980s.paragraph2"),
+            ],
+            closingParagraph: "",
+          };
+        case 3:
+          return {
+            ...chapter,
+            title: t("bio.chapter.assassination"),
+            heroParagraph: t("bio.assassination.paragraph1"),
+            bodyParagraph: t("bio.assassination.paragraph2"),
+            testimonial: {
+              quote: t("bio.assassination.testimonial"),
+              attribution: t("bio.assassination.testimonial.attribution"),
+            },
+            legacyParagraphs: [
+              t("bio.legacy.paragraph1"),
+              t("bio.legacy.paragraph2"),
+              t("bio.legacy.paragraph3"),
+              t("bio.legacy.paragraph4"),
+              t("bio.legacy.paragraph5"),
+              t("bio.legacy.paragraph6"),
+            ],
+            closingParagraph: "",
+          };
+        default:
+          return chapter;
+      }
+    }),
+  };
 }
 
 const biographies: BiographyData[] = [
@@ -154,13 +223,12 @@ const biographies: BiographyData[] = [
         closingParagraph: loremClosewhat,
       },
       {
-        title: "Assassination",
+        title: "Sacrifice and Martyrdom",
         heroImage: BASE + "/image/biography1/headassassin.jpeg",
         heroParagraph: loremMed4,
         carouselImages: [
           { url: BASE + "/image/biography1/a2.jpeg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/slide2.png", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/a4.jpeg", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/fixedslide.png", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/a5.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/as6.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/as7.jpeg", alt: "Description of image", caption: "Description" },
@@ -348,9 +416,11 @@ function ImageCarousel({ images, autoplayInterval = 0, className = "" }: {
 
 export function BiographyPage() {
   const { id } = useParams();
+  const { t } = useTranslation();
   const biography = biographies.find((bio) => bio.id === id);
+  const displayBiography = biography ? getTranslatedBiography(biography, t) : null;
 
-  if (!biography) {
+  if (!displayBiography) {
     return <Navigate to="/" replace />;
   }
 
@@ -374,7 +444,7 @@ export function BiographyPage() {
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
             }}
           >
-            {biography.name}
+            {displayBiography.name}
           </motion.h1>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -389,7 +459,7 @@ export function BiographyPage() {
             className="text-xs uppercase tracking-widest text-gray-500 mb-2"
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
-            {biography.role}
+            {displayBiography.role}
           </motion.p>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
@@ -398,14 +468,14 @@ export function BiographyPage() {
             className="text-lg italic text-gray-600"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            {biography.years}
+            {displayBiography.years}
           </motion.p>
         </div>
       </motion.section>
 
       {/* Chapters */}
       <div>
-        {biography.chapters.map((chapter, chapterIdx) => {
+        {displayBiography.chapters.map((chapter, chapterIdx) => {
           const heroImage = chapter.heroImage || chapter.carouselImages[0]?.url || "";
           return (
             <motion.article
@@ -496,16 +566,18 @@ export function BiographyPage() {
               </div>
 
               {/* Closing paragraph between first and second carousel */}
-              <div className="px-4 md:px-6 lg:px-12 pt-6 pb-6">
-                <div className="container mx-auto max-w-5xl">
-                  <p
-                    className="text-sm md:text-base text-gray-700 leading-relaxed"
-                    style={{ fontFamily: "'Work Sans', sans-serif" }}
-                  >
-                    {chapter.closingParagraph}
-                  </p>
+              {chapter.closingParagraph && (
+                <div className="px-4 md:px-6 lg:px-12 pt-6 pb-6">
+                  <div className="container mx-auto max-w-5xl">
+                    <p
+                      className="text-sm md:text-base text-gray-700 leading-relaxed"
+                      style={{ fontFamily: "'Work Sans', sans-serif" }}
+                    >
+                      {chapter.closingParagraph}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* SECOND CAROUSEL - Manual navigation only */}
               {chapter.secondCarouselImages && chapter.secondCarouselImages.length > 0 && (
@@ -588,7 +660,7 @@ export function BiographyPage() {
                         letterSpacing: "-0.01em",
                       }}
                     >
-                      Legacy
+                      {t("bio.legacy.title")}
                     </h3>
                     {chapter.legacyParagraphs.map((paragraph, idx) => (
                       <p

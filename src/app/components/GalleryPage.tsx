@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Play } from "lucide-react";
+import { useTranslation } from "../context/TranslationContext";
 
 interface GalleryImage {
   url: string;
@@ -188,6 +189,8 @@ function VideoCard({ video }: { video: GalleryVideo }) {
 }
 
 export function GalleryPage() {
+  const { language, t } = useTranslation();
+
   return (
     <div className="bg-white">
       {/* Hero */}
@@ -208,7 +211,7 @@ export function GalleryPage() {
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
             }}
           >
-            Photo & <span className="italic">Video</span> Gallery
+            {language === "en" ? t("gallery.hero.title") : "ਯਾਦਾਂ"}
           </motion.h1>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -223,7 +226,7 @@ export function GalleryPage() {
             className="text-sm md:text-base text-gray-600 max-w-xl mx-auto"
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
-            A visual record of the scholarship, its founders, and the lives it has shaped.
+            {language === "en" ? t("gallery.hero.subtitle") : "ਇਸ ਸਕਾਲਰਸ਼ਿਪ, ਇਸਦੇ ਸਥਾਪਕਾਂ ਅਤੇ ਇਸ ਦੇ ਰੂਪ ਵਿੱਚ ਆਏ ਜੀਵਨ ਦੀ ਦਿੱਖੀ ਰਿਕਾਰਡ।"}
           </motion.p>
         </div>
       </motion.section>
@@ -242,7 +245,7 @@ export function GalleryPage() {
                 className="text-2xl md:text-3xl mb-2"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                Photographs
+                {language === "en" ? t("gallery.photos.title") : "ਫੋਟੋ"}
               </h2>
               <div className="w-12 h-0.5 bg-black" />
             </div>

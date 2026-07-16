@@ -62,7 +62,7 @@ export function AboutPage() {
           >
             {language === "en"
               ? "Chanan Da Chaanan - Building futures through education"
-              : "ਚਾਨਣ ਦੇ ਚੰਨਣ - ਸਿੱਖਿਆ ਰਾਹੀਂ ਭਵਿੱਖ ਬਣਾਉਣਾ"}
+              : "ਚੰਨਣ ਦਾ ਚਾਨਣ - ਸਿੱਖਿਆ ਰਾਹੀਂ ਭਵਿੱਖ ਬਣਾਉਣਾ"}
           </motion.p>
         </div>
       </motion.section>

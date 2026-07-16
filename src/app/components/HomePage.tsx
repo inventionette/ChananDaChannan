@@ -52,7 +52,11 @@ export function HomePage() {
             className="mb-4"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }}
           >
-            Chanan Da <span className="italic">Chaanan</span>
+            {language === 'en' ? (
+              <>Chanan Da <span className="italic">Chaanan</span></>
+            ) : (
+              <>ਚੰਨਣ ਦਾ <span className="italic">ਚਾਨਣ</span></>
+            )}
           </motion.h1>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -273,7 +277,7 @@ export function HomePage() {
                 {/* Details */}
                 <div className="mb-4">
                   <h3 className="text-2xl md:text-3xl mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {founder.name}
+                    {language === 'en' ? founder.name : 'ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ'}
                   </h3>
                   <p className="text-xs uppercase tracking-widest text-gray-500 mb-1" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                     {founder.role}

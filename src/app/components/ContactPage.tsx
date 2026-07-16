@@ -247,7 +247,7 @@ export function ContactPage() {
 
                   <div>
                     <label className={labelClass} htmlFor="email">
-                      Email Address *
+                      Email Address
                     </label>
                     <input
                       id="email"
@@ -256,7 +256,6 @@ export function ContactPage() {
                       className={inputClass}
                       style={{ fontFamily: "'Work Sans', sans-serif" }}
                       {...register("email", {
-                        required: "Email address is required",
                         pattern: {
                           value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                           message: "Please enter a valid email address",

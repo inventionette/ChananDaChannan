@@ -72,8 +72,9 @@ export function RootLayout() {
                 onMouseEnter={() => setBiographyDropdownOpen(true)}
                 onMouseLeave={() => setBiographyDropdownOpen(false)}
               >
-                <Link
-                  to="/"
+                <button
+                  type="button"
+                  onClick={() => setBiographyDropdownOpen((prev) => !prev)}
                   className="flex items-center gap-1 group"
                   style={{
                     fontFamily: "'Work Sans', sans-serif",
@@ -83,7 +84,7 @@ export function RootLayout() {
                     {t("nav.biography")}
                   </span>
                   <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:text-gray-600" style={{ transform: biographyDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
-                </Link>
+                </button>
                 {(location.pathname === "/" || location.pathname.startsWith("/biography")) && (
                   <motion.div
                     layoutId="activeNav"
@@ -135,6 +136,8 @@ export function RootLayout() {
                 onMouseLeave={() => setScholarshipDropdownOpen(false)}
               >
                 <button
+                  type="button"
+                  onClick={() => setScholarshipDropdownOpen((prev) => !prev)}
                   className="flex items-center gap-1 group"
                   style={{
                     fontFamily: "'Work Sans', sans-serif",

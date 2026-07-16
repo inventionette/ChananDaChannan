@@ -205,7 +205,7 @@ const biographies: BiographyData[] = [
       },
       {
         title: "Leadership",
-        heroImage: BASE + "/image/biography1/headlead.jpeg",
+        heroImage: BASE + "/image/biography1/fh.png",
         heroParagraph: loremMed3,
         carouselImages: [
           { url: BASE + "/image/biography1/l2.jpeg", alt: "Description of image", caption: "Description" },
@@ -477,6 +477,7 @@ export function BiographyPage() {
       <div>
         {displayBiography.chapters.map((chapter, chapterIdx) => {
           const heroImage = chapter.heroImage || chapter.carouselImages[0]?.url || "";
+          const heroAlt = `${displayBiography.name} — ${chapter.title}`;
           return (
             <motion.article
               key={chapterIdx}
@@ -510,7 +511,7 @@ export function BiographyPage() {
                     <div className="aspect-square bg-gray-100 border border-black/20 overflow-hidden shadow-md">
                       <ImageWithFallback
                         src={heroImage}
-                        alt={`${biography.name} — ${chapter.title}`}
+                        alt={heroAlt}
                         className="w-full h-full object-cover grayscale"
                       />
                     </div>
@@ -527,7 +528,7 @@ export function BiographyPage() {
                     <div className="aspect-square bg-gray-100 border border-black/20 overflow-hidden shadow-sm">
                       <ImageWithFallback
                         src={heroImage}
-                        alt={`${biography.name} — ${chapter.title}`}
+                        alt={heroAlt}
                         className="w-full h-full object-cover grayscale"
                       />
                     </div>

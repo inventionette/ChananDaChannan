@@ -60,7 +60,7 @@ export function RootLayout() {
                 }}
                 whileHover={{ scale: 1.02 }}
               >
-                Chanan Da Channan{" "}
+                Chanan Da Chaanan{" "}
               </motion.h1>
             </Link>
 
@@ -490,7 +490,7 @@ export function RootLayout() {
                   fontFamily: "'Cormorant Garamond', serif",
                 }}
               >
-                Chanan Da Channan{" "}
+                Chanan Da Chaanan{" "}
               </h3>
               <p
                 className="text-sm md:text-base text-gray-400 leading-relaxed"
@@ -527,7 +527,7 @@ export function RootLayout() {
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
             <p>
-              &copy; 2026 Chanan Da Channan. All rights
+              &copy; 2026 Chanan Da Chaanan. All rights
               reserved.
             </p>
           </div>

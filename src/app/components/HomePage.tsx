@@ -52,7 +52,7 @@ export function HomePage() {
             className="mb-4"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }}
           >
-            Chanan Da <span className="italic">Channan</span>
+            Chanan Da <span className="italic">Chaanan</span>
           </motion.h1>
           <motion.div
             initial={{ scaleX: 0 }}

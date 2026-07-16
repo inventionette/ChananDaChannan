@@ -1,9 +1,11 @@
 import { motion } from "motion/react";
 import { useParams, Navigate } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ImageCarousel } from "./ImageCarousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { AnimatePresence } from "framer-motion";
 
-const BASE = "/ChananDaChannan/";
+const BASE = "/ChananDaChaanan/";
 
 const loremMed1 = "Comrade Gurmail Singh Hunjan was born on 15 November 1951 in Pandher Kheri, Ludhiana, Punjab, India. Raised in a politically active family, his father, Comrade Chanan Singh Barola, was a respected freedom fighter who instilled in him the values of justice, equality, and commitment to working class. His mother was Jaswant Kaur. His father joined India's freedom struggle, starting with the Indian National Congress and later became a communist after meeting other revolutionaries in the prison. He often shared how Nehru's books, Glimpses of World History and The Discovery of India, shaped his views. During the partition in 1947, Comrade Barola and his friends risked their lives to help Muslim families reach Malerkotla safely. These actions revealed the secular and humanitarian values that later defined Comrade Hunjan. Comrade Hunjan began his education in Maloud and attended Government College in Malerkotla before earning a Master's in Political Science at Arya College, Ludhiana. He excelled in sports, especially Kabaddi, which drew large crowds in local tournaments. His real passion, though, was public life and activism.";
 
@@ -105,7 +107,7 @@ const biographies: BiographyData[] = [
           { url: BASE + "/image/biography1/g15.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/g16.jpg", alt: "Description of image", caption: "Description" },
         ],
-        secondCarouselTitle: "Germany",
+        secondCarouselTitle: "", // Removed "Germany" title
         bodyParagraph: loremBody1,
         closingParagraph: loremClose1,
       },
@@ -157,7 +159,7 @@ const biographies: BiographyData[] = [
         heroParagraph: loremMed4,
         carouselImages: [
           { url: BASE + "/image/biography1/a2.jpeg", alt: "Description of image", caption: "Description" },
-          { url: BASE + "/image/biography1/a3.jpeg", alt: "Description of image", caption: "Description" },
+          { url: BASE + "/image/biography1/slide2.png", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/a4.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/a5.jpeg", alt: "Description of image", caption: "Description" },
           { url: BASE + "/image/biography1/as6.jpeg", alt: "Description of image", caption: "Description" },
@@ -198,6 +200,147 @@ function TestimonialBlock({ quote, attribution }: { quote: string; attribution: 
         style={{ fontFamily: "'Work Sans', sans-serif" }}
       >
         — {attribution}
+      </p>
+    </div>
+  );
+}
+
+// ImageCarousel component remains the same
+function ImageCarousel({ images, autoplayInterval = 0, className = "" }: { 
+  images: { url: string; alt: string; caption: string; year?: string }[];
+  autoplayInterval?: number;
+  className?: string;
+}) {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const go = useCallback(
+    (next: number) => {
+      setDirection(next > current ? 1 : -1);
+      setCurrent((next + images.length) % images.length);
+    },
+    [current, images.length]
+  );
+
+  const prev = () => go(current - 1);
+  const next = () => go(current + 1);
+
+  const resetAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
+    if (autoplayInterval > 0) {
+      autoplayRef.current = setInterval(() => {
+        setDirection(1);
+        setCurrent((c) => (c + 1) % images.length);
+      }, autoplayInterval);
+    }
+  }, [autoplayInterval, images.length]);
+
+  useEffect(() => {
+    resetAutoplay();
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+  }, [resetAutoplay]);
+
+  const handlePrev = () => { prev(); resetAutoplay(); };
+  const handleNext = () => { next(); resetAutoplay(); };
+  const handleDot = (i: number) => { go(i); resetAutoplay(); };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      diff > 0 ? handleNext() : handlePrev();
+    }
+    touchStartX.current = null;
+  };
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+  };
+
+  return (
+    <div className={`w-full mx-auto select-none ${className}`}>
+      <div
+        className="relative overflow-hidden bg-gray-100 border border-black/15 shadow-md"
+        style={{ aspectRatio: "16/9" }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.45, ease: [0.32, 0, 0.68, 0] }}
+            className="absolute inset-0"
+          >
+            <ImageWithFallback
+              src={images[current].url}
+              alt={images[current].alt}
+              className="w-full h-full object-cover grayscale"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-5 py-4">
+              <p
+                className="text-white text-sm font-medium"
+                style={{ fontFamily: "'Work Sans', sans-serif" }}
+              >
+                {images[current].caption}
+                {images[current].year && (
+                  <span className="ml-2 text-white/60 text-xs">· {images[current].year}</span>
+                )}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        <button
+          onClick={handlePrev}
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white border border-black/10 flex items-center justify-center shadow-sm transition-all hover:scale-105 z-10"
+          aria-label="Previous image"
+        >
+          <ChevronLeft className="w-4 h-4 text-black" />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white border border-black/10 flex items-center justify-center shadow-sm transition-all hover:scale-105 z-10"
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-4 h-4 text-black" />
+        </button>
+      </div>
+
+      <div className="flex items-center justify-center gap-2 mt-4">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => handleDot(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className="transition-all duration-300 rounded-full focus:outline-none"
+            style={{
+              width: i === current ? "20px" : "8px",
+              height: "8px",
+              backgroundColor: i === current ? "#000" : "#d1d5db",
+            }}
+          />
+        ))}
+      </div>
+
+      <p
+        className="text-center text-xs text-gray-400 mt-2"
+        style={{ fontFamily: "'Work Sans', sans-serif" }}
+      >
+        {current + 1} / {images.length}
       </p>
     </div>
   );
@@ -294,7 +437,7 @@ export function BiographyPage() {
                 <div className="container mx-auto max-w-5xl">
                   {/* Desktop two-column */}
                   <div className="hidden md:grid grid-cols-[2fr_3fr] gap-10 items-start">
-                    <div className="aspect-[3/4] bg-gray-100 border border-black/20 overflow-hidden shadow-md">
+                    <div className="aspect-square bg-gray-100 border border-black/20 overflow-hidden shadow-md">
                       <ImageWithFallback
                         src={heroImage}
                         alt={`${biography.name} — ${chapter.title}`}
@@ -311,7 +454,7 @@ export function BiographyPage() {
 
                   {/* Mobile stacked */}
                   <div className="md:hidden space-y-5">
-                    <div className="aspect-[4/3] bg-gray-100 border border-black/20 overflow-hidden shadow-sm">
+                    <div className="aspect-square bg-gray-100 border border-black/20 overflow-hidden shadow-sm">
                       <ImageWithFallback
                         src={heroImage}
                         alt={`${biography.name} — ${chapter.title}`}
@@ -340,14 +483,13 @@ export function BiographyPage() {
                 </div>
               </div>
 
-              {/* FIRST CAROUSEL - Manual navigation only (autoplay disabled) */}
+              {/* FIRST CAROUSEL - Manual navigation only */}
               <div className="px-4 md:px-6 lg:px-12">
                 <div className="container mx-auto max-w-4xl">
                   {chapter.carouselImages && chapter.carouselImages.length > 0 && (
                     <ImageCarousel 
                       images={chapter.carouselImages} 
                       autoplayInterval={0}
-                      className="max-w-4xl"
                     />
                   )}
                 </div>
@@ -369,31 +511,31 @@ export function BiographyPage() {
               {chapter.secondCarouselImages && chapter.secondCarouselImages.length > 0 && (
                 <div className="px-4 md:px-6 lg:px-12 mt-10">
                   <div className="container mx-auto max-w-4xl">
-                    {chapter.secondCarouselTitle && (
-                                          <div>
-                                            <div className="w-full h-px bg-black/25 mb-6 md:mb-8" />
-                                            <h2
-                                              className="leading-none mb-6"
-                                              style={{
-                                                fontFamily: "'Cormorant Garamond', serif",
-                                                fontSize: "clamp(3rem, 9vw, 6.5rem)",
-                                                letterSpacing: "-0.01em",
-                                              }}
-                                            >
-                                              {chapter.secondCarouselTitle}
-                                            </h2>
-                                          </div>
-                                        )}
+                    {/* Germany title removed - check if any other title exists */}
+                    {chapter.secondCarouselTitle && chapter.secondCarouselTitle !== "Germany" && (
+                      <div>
+                        <div className="w-full h-px bg-black/25 mb-6 md:mb-8" />
+                        <h2
+                          className="leading-none mb-6"
+                          style={{
+                            fontFamily: "'Cormorant Garamond', serif",
+                            fontSize: "clamp(3rem, 9vw, 6.5rem)",
+                            letterSpacing: "-0.01em",
+                          }}
+                        >
+                          {chapter.secondCarouselTitle}
+                        </h2>
+                      </div>
+                    )}
                     <ImageCarousel 
                       images={chapter.secondCarouselImages} 
                       autoplayInterval={0}
-                      className="max-w-4xl"
                     />
                   </div>
                 </div>
               )}
 
-              {/* 1980s Punjab Subsection - with divider and matching heading style */}
+              {/* 1980s Punjab Subsection */}
               {chapter.subsectionTitle && chapter.subsectionParagraphs && (
                 <div className="px-4 md:px-6 lg:px-12 mt-14 md:mt-20">
                   <div className="container mx-auto max-w-5xl">
@@ -433,7 +575,7 @@ export function BiographyPage() {
                 </div>
               )}
 
-              {/* Legacy Subsection - with divider and matching heading style */}
+              {/* Legacy Subsection */}
               {chapter.legacyParagraphs && (
                 <div className="px-4 md:px-6 lg:px-12 mt-14 md:mt-20">
                   <div className="container mx-auto max-w-5xl">

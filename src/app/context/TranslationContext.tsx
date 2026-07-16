@@ -47,7 +47,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Page
     'about.title': 'About Us',
-    'about.subtitle': 'Chanan Da Channan - Building futures through education',
+    'about.subtitle': 'Chanan Da Chaanan - Building futures through education',
     'about.mission': 'Our Mission',
     'about.vision': 'Our Vision',
     'about.values': 'Our Values',

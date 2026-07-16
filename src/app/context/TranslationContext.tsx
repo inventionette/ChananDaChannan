@@ -8,7 +8,7 @@ interface TranslationContextType {
   t: (key: string) => string;
 }
 
-const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
+export const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 const translations: Record<Language, Record<string, string>> = {
   en: {

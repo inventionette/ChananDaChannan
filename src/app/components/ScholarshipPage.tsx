@@ -1,15 +1,17 @@
+import { useContext } from "react";
 import { motion } from "motion/react";
 import { GraduationCap, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Link } from "react-router";
-import { useTranslation } from "../context/TranslationContext";
+import { TranslationContext } from "../context/TranslationContext";
 import {
   HistoricalDivider,
   SectionDivider,
 } from "./HistoricalDivider";
 
 export function ScholarshipPage() {
-  const { language } = useTranslation();
+  const context = useContext(TranslationContext);
+  const language = context?.language ?? "en";
   const pastScholars = [
     {
       name: "Name of Person",

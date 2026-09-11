@@ -174,27 +174,16 @@ export function ApplicationPage() {
       {/* Application Form */}
       <section className="py-20 px-6 lg:px-12">
         <div className="container mx-auto max-w-4xl">
-          {/* Image Placeholder */}
+          {/* Image container */}
           <div className="mb-12 flex justify-center">
-            <div className="w-full max-w-md h-64 bg-gray-100 border-2 border-black/20 flex items-center justify-center">
-              <div className="text-center p-6">
-                <p
-                  className="text-gray-500 text-sm mb-2"
-                  style={{
-                    fontFamily: "'Work Sans', sans-serif",
-                  }}
-                >
-                  Image Placeholder
-                </p>
-                <p
-                  className="text-gray-700 font-medium"
-                  style={{
-                    fontFamily: "'Work Sans', sans-serif",
-                  }}
-                >
-                  Shaheed-a-Azam Bhagat Singh
-                </p>
-              </div>
+            <div className="w-full max-w-md h-64 bg-gray-100 border-2 border-black/20 overflow-hidden">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{
+                  backgroundImage: "url('/image/biography1/shaheedimage.JPG')",
+                }}
+                aria-label="Scholarship image"
+              />
             </div>
           </div>
 

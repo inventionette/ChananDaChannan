@@ -180,7 +180,13 @@ export function ContactPage() {
                 </h3>
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-10">
+              <form
+                action="https://formspree.io/f/mkjnejqb"
+                method="POST"
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+                className="space-y-10"
+              >
 
                 {/* Full name */}
                 <div>

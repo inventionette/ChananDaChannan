@@ -177,12 +177,10 @@ export function ApplicationPage() {
           {/* Image container */}
           <div className="mb-12 flex justify-center">
             <div className="w-full max-w-md h-64 bg-gray-100 border-2 border-black/20 overflow-hidden">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{
-                  backgroundImage: "url('/image/biography1/shaheedimage.JPG')",
-                }}
-                aria-label="Scholarship image"
+              <img
+                src="/image/biography1/shaheedimage.JPG"
+                alt="Scholarship image"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

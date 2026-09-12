@@ -45,35 +45,224 @@ const galleryImages: GalleryImage[] = [
 
 const galleryVideos: GalleryVideo[] = [
   {
+    // memories of light moments videos 1 to 4
     youtubeUrl: "https://youtu.be/Hw8fj3kyCco?si=L9arah5VcONL0BH9",
-    title: "Description",
-    description: "Description",
-    year: "1995",
+    title: "Comrade Gurmail Hunjan - Memories of Light Moments - 1/4",
+    description: "",
+    year: "",
   },
   {
     youtubeUrl: "https://youtu.be/7mJjBX3Icok?si=SbdKJtvl2rdEaflT",
-    title: "Description",
-    description: "Description",
-    year: "2002",
+    title: "Comrade Gurmail Hunjan - Memories of Light Moments - 2/4",
+    description: "",
+    year: "",
   },
   {
     youtubeUrl: "https://youtu.be/HsgVn0zcFVw?si=RNq334uNEeKhj04D",
-    title: "Description",
-    description: "Description",
-    year: "2010",
+    title: "Comrade Gurmail Hunjan - Memories of Light Moments - 3/4",
+    description: "",
+    year: "",
   },
   {
     youtubeUrl: "https://youtu.be/TfS7dHiDnJE?si=VJqaw8WpB5ernK_w",
-    title: "Description",
-    description: "Description",
-    year: "2020",
+    title: "Comrade Gurmail Hunjan - Memories of Light Moments - 4/4",
+    description: "",
+    year: "",
   },
   {
-    youtubeUrl: "https://youtu.be/sU6vAk5OP1I?si=RO-tstIo8wDo5c_D",
-    title: "Description",
-    description: "Description",
-    year: "1995",
-  }
+    youtubeUrl: "https://youtu.be/sU6vAk5OP1I",
+    title: "Comrade Gurmail Hunjan - Addressing a Rally",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/A5aszCuU0oI",
+    title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 1/6",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/Ivm5IaTEd7g",
+    title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 2/6",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/DzpDiAHIaOQ",
+    title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 3/6",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/OoPaNks1IxA",
+    title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 4/6",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/_OMXpuBludU",
+    title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 5/6",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/X730ghDeB_U",
+    title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 6/6",
+    description: "",
+    year: "",
+  },
+  {
+    youtubeUrl: "https://youtu.be/y6-r2235dmc",
+    title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 1/25 - Opening Comrade Kartar Bowani",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/vWxtJfdlb3s",
+    title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 2/25",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/Mo5XStqDUtI",
+    title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 3/25 - Comrade Bharat Parkash",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/tekUCejr5T8",
+    title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 4/25 - Beant Singh",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/YSAI87_vfPs",
+    title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 5/25 - Comrade Piara Singh Deosi",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/2kSt1xfRXoo",
+    title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 6/25 - Comrade Rashpal Singh",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/r1HJH7qLlMM",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 7/25 Comrade Bant Singh Brar",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/YW1f9GozalM",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 8/25 - Comrade Joginder Dayal",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/7-E7uzYyUCU",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 9/25 - Comrade Tulsi Ram",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/3k3QDAOKThE",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 10/25 - Prof Jagmohan Singh",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/yG1n6jqOXrE",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 11/25 - Comrade Bhupinder Sambar",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/70a_G63mp8Y",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 12/25 - Comrade Namdhari Subha Mela Singh",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/bQqm4UburxU",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 13/25 - Comrade Kuldip Singh",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/vTtnsCDfons",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 14/25 - Comrade Ruldu Khan",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/Tz7QjS86hVA",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 15/25 - Comrade Sukhinder Singh",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/YshCWmXqDPQ",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 16/25 - Comrade Bhan Singh Bhaura",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/NNXPgWCd7oM",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 17/25 - Comrade O P Mehta",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/mcg7FzdtD1Q",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 18/25 - Comrade Urmila Anand",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/7qsgwERwO6o",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 19/25 - Com Dr Shanti Lal Thapar Freedom Fighter",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/zPq8jcinf8E",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 20/25 - Comrade Karamjit Kaur",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/Y-gjjzguliE",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 21/25 - Comrade Darshan Singh Boparai",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/XtljW8Xq2aI",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 22/25 - Comrade Kartar Singh Bowani",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/ha4sq1i0n34",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 23/25 - Comrade Jagjit Singh Aanad",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/ro41N5SFSd4",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 24/25 - Comrade Chanan Singh Barola",
+    description: "",
+    year: ""
+  },
+  {
+    youtubeUrl: "https://youtu.be/F4MVvS6OPWE",
+    title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 25/25 - Closing by Comrade Bharat Parkash",
+    description: "",
+    year: ""
+  },
+  
+
 ];
 
 function PhotoGrid({ images }: { images: GalleryImage[] }) {

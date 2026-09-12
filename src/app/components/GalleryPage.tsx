@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { Play } from "lucide-react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { ChevronDown, Play } from "lucide-react";
 import { useTranslation } from "../context/TranslationContext";
 
 interface GalleryImage {
@@ -69,6 +70,12 @@ const galleryVideos: GalleryVideo[] = [
     description: "",
     year: "",
   },
+
+  // end of memories of lights dropdown section 
+
+
+
+  // start of section called cremation from 1 to 6 videos
   {
     youtubeUrl: "https://youtu.be/sU6vAk5OP1I",
     title: "Comrade Gurmail Hunjan - Addressing a Rally",
@@ -110,7 +117,12 @@ const galleryVideos: GalleryVideo[] = [
     title: "Comrade Gurmail Hunjan and Joginder Singh - Cremation - 6/6",
     description: "",
     year: "",
+    // end of cremation dropdown section videos 1 to 6
   },
+
+
+
+  // start of final tribute ceremony videos 1 to 25
   {
     youtubeUrl: "https://youtu.be/y6-r2235dmc",
     title: "Comrade Gurmail Hunjan and Joginder - Final Tribute Ceremony - 1/25 - Opening Comrade Kartar Bowani",
@@ -260,9 +272,28 @@ const galleryVideos: GalleryVideo[] = [
     title: "Comrade Gurmail Hunjan - Final Tribute Ceremony - 25/25 - Closing by Comrade Bharat Parkash",
     description: "",
     year: ""
+
+    // end of final tribute ceremony videos 1 t0 25
   },
   
 
+];
+
+const galleryVideoSections = [
+  {
+    title: "Memories of Light Moments",
+    videos: galleryVideos.filter((video) => video.title.includes("Memories of Light Moments")),
+  },
+  {
+    title: "Cremation",
+    videos: galleryVideos.filter(
+      (video) => video.title.includes("Cremation") || video.title.includes("Addressing a Rally")
+    ),
+  },
+  {
+    title: "Final Tribute Ceremony",
+    videos: galleryVideos.filter((video) => video.title.includes("Final Tribute Ceremony")),
+  },
 ];
 
 function PhotoGrid({ images }: { images: GalleryImage[] }) {
@@ -298,6 +329,55 @@ function PhotoGrid({ images }: { images: GalleryImage[] }) {
           </div>
         </motion.div>
       ))}
+    </div>
+  );
+}
+
+function VideoSectionDropdown({ section }: { section: { title: string; videos: GalleryVideo[] } }) {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <div className="mb-4 border border-black/10 bg-white shadow-sm">
+      <button
+        type="button"
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-gray-50"
+        onClick={() => setOpen((prev) => !prev)}
+        style={{ fontFamily: "'Work Sans', sans-serif" }}
+      >
+        <span className="text-xs font-medium uppercase tracking-[0.22em] text-gray-600">
+          {section.title}
+        </span>
+        <ChevronDown
+          className="w-4 h-4 text-gray-600 transition-transform duration-300"
+          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-black/10 grid grid-cols-1 sm:grid-cols-2 gap-6 px-5 py-5">
+              {section.videos.map((video, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06, duration: 0.45 }}
+                >
+                  <VideoCard video={video} />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -468,17 +548,9 @@ export function GalleryPage() {
               </h2>
               <div className="w-12 h-0.5 bg-black" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {galleryVideos.map((video, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.5 }}
-                >
-                  <VideoCard video={video} />
-                </motion.div>
+            <div className="space-y-3">
+              {galleryVideoSections.map((section) => (
+                <VideoSectionDropdown key={section.title} section={section} />
               ))}
             </div>
           </motion.div>

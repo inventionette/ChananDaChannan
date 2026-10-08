@@ -247,7 +247,9 @@ export function RootLayout() {
                 style={{
                   fontFamily: "'Work Sans', sans-serif",
                 }}
-                aria-label="Toggle language"
+                aria-label={
+                  language === "en" ? "Toggle language" : "ਭਾਸ਼ਾ ਬਦਲੋ"
+                }
               >
                 <Languages className="w-3 h-3" />
                 {language === "en" ? "PA" : "EN"}
@@ -463,10 +465,14 @@ export function RootLayout() {
                       onClick={toggleLanguage}
                       className="flex items-center gap-3 px-6 py-3 border-2 border-black hover:bg-black hover:text-white transition-colors text-sm"
                       style={{ fontFamily: "'Work Sans', sans-serif" }}
-                      aria-label="Toggle language"
+                      aria-label={
+                        language === "en" ? "Toggle language" : "ਭਾਸ਼ਾ ਬਦਲੋ"
+                      }
                     >
                       <Languages className="w-4 h-4" />
-                      {language === "en" ? "Switch to Punjabi" : "Switch to English"}
+                      {language === "en"
+                        ? "Switch to Punjabi"
+                        : "ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਬਦਲੋ"}
                     </button>
                   </motion.div>
                 </div>
@@ -493,7 +499,7 @@ export function RootLayout() {
                   fontFamily: "'Cormorant Garamond', serif",
                 }}
               >
-                Chanan Da Chaanan{" "}
+                {t("site.brand")}
               </h3>
               <p
                 className="text-sm md:text-base text-gray-400 leading-relaxed"
@@ -501,8 +507,7 @@ export function RootLayout() {
                   fontFamily: "'Work Sans', sans-serif",
                 }}
               >
-                Empowering future leaders through education and
-                scholarship opportunities.
+                {t("footer.tagline")}
               </p>
             </div>
 
@@ -530,8 +535,7 @@ export function RootLayout() {
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
             <p>
-              &copy; 2026 Chanan Da Chaanan. All rights
-              reserved.
+              &copy; 2026 {t("site.brand")}. {t("footer.rights")}
             </p>
           </div>
         </div>

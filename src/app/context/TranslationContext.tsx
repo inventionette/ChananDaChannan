@@ -34,6 +34,8 @@ const translations: Record<Language, Record<string, string>> = {
     'common.earlyLife': 'Early Life',
     'common.career': 'Career & Achievements',
     'common.legacy': 'Legacy & Impact',
+    'footer.tagline': 'Empowering deserving students through education and scholarship opportunities',
+    'footer.rights': 'All rights reserved.',
 
     // Home Page
     'home.hero.title': 'Chanan Da Chaanan',
@@ -151,6 +153,8 @@ const translations: Record<Language, Record<string, string>> = {
     'common.earlyLife': 'ਸ਼ੁਰੂਆਤੀ ਜੀਵਨ',
     'common.career': 'ਕਰੀਅਰ ਅਤੇ ਪ੍ਰਾਪਤੀਆਂ',
     'common.legacy': 'ਵਿਰਾਸਤ ਅਤੇ ਪ੍ਰਭਾਵ',
+    'footer.tagline': 'ਯੋਗ ਵਿਦਿਆਰਥੀਆਂ ਨੂੰ ਸਿੱਖਿਆ ਤੇ ਵਜ਼ੀਫੇ ਰਾਹੀਂ ਸ਼ਕਤੀਸ਼ਾਲੀ ਬਣਾਉਣਾ',
+    'footer.rights': 'ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।',
 
     // Home Page
     'home.hero.title': 'ਚੰਨਣ ਦਾ ਚਾਨਣ',

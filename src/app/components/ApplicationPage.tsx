@@ -178,7 +178,7 @@ export function ApplicationPage() {
           <div className="mb-12 flex justify-center">
             <div className="w-full max-w-md h-64 bg-gray-100 border-2 border-black/20 overflow-hidden">
               <img
-                src="/image/biography1/retry.JPG"
+                src={`${import.meta.env.BASE_URL}image/biography1/retry.JPG`}
                 alt="Scholarship image"
                 className="w-full h-full object-cover"
               />

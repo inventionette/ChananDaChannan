@@ -1,7 +1,6 @@
 import { useTranslation } from "../context/TranslationContext";
 import { motion } from "motion/react";
 import { SectionDivider } from "./HistoricalDivider";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function AboutPage() {
   const { language } = useTranslation();
@@ -147,29 +146,6 @@ export function AboutPage() {
               ? "Investing in Education — Investing in the Future."
               : "ਸਿੱਖਿਆ ਵਿੱਚ ਨਿਵੇਸ਼ — ਭਵਿੱਖ ਵਿੱਚ ਨਿਵੇਸ਼।"}
           </p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="mt-8"
-          >
-            <div className="aspect-[16/9] md:aspect-[21/9] bg-gray-100 border-2 border-black/20 overflow-hidden shadow-xl">
-              <ImageWithFallback
-                src=""
-                alt={isEnglish ? "Our organization" : "ਸਾਡੀ ਸੰਸਥਾ"}
-                className="w-full h-full object-cover grayscale"
-              />
-            </div>
-            <p
-              className="mt-2 text-xs text-gray-600 italic text-center"
-              style={{ fontFamily: isEnglish ? "'Work Sans', sans-serif" : "sans-serif" }}
-            >
-              {isEnglish
-                ? "Our community and mission"
-                : "ਸਾਡਾ ਭਾਈਚਾਰਾ ਅਤੇ ਮਿਸ਼ਨ"}
-            </p>
-          </motion.div>
         </div>
       </section>
 

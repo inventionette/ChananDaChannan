@@ -108,6 +108,79 @@ export function ScholarshipPage() {
         },
       ];
 
+  const scholars = [
+    {
+      name: "Jaspreet Singh",
+      institute: "Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib, Punjab",
+      branch: "Electrical Engineering",
+      donation: "Full course fee",
+      year: "2013",
+    },
+    {
+      name: "Loveleen Kaur",
+      institute: "Guru Nanak Dev Polytechnic College, Ludhiana, Punjab",
+      branch: "Computer Engineering",
+      donation: "Full course fee",
+      year: "2015",
+    },
+    {
+      name: "Simranjit Kaur",
+      institute: "Shaheed Kartar Singh Sarabha College of Nursing, Sarabha, Ludhiana, Punjab",
+      branch: "General Nursing and Midwife",
+      donation: "One semester fee",
+      year: "2016",
+    },
+    {
+      name: "Harmeet Singh",
+      institute: "Guru Nanak Dev Polytechnic College, Ludhiana, Punjab",
+      branch: "Electronic Engineering",
+      donation: "One semester fee",
+      year: "2017",
+    },
+    {
+      name: "Loveleen Kaur",
+      institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      branch: "Computer Engineering",
+      donation: "Full course fee",
+      year: "2018",
+    },
+    {
+      name: "Taranpreet Kaur",
+      institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      branch: "Electrical Engineering",
+      donation: "One semester fee",
+      year: "2019",
+    },
+    {
+      name: "Husanpreet Kaur",
+      institute: "Guru Hargobind Khalsa College, Gurasar Sudhar, Ludhiana, Punjab",
+      branch: "Bachelor of Science",
+      donation: "Full course fee",
+      year: "2023",
+    },
+    {
+      name: "Pardeep Kumar",
+      institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      branch: "Civil Engineering",
+      donation: "One semester fee",
+      year: "2024",
+    },
+    {
+      name: "Abhinav Kumar",
+      institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      branch: "Civil Engineering",
+      donation: "One semester fee",
+      year: "2025",
+    },
+    {
+      name: "Husanpreet Kaur",
+      institute: "Punjab Agriculture University, Ludhiana, Punjab",
+      branch: "Master of Science",
+      donation: "Full course fee",
+      year: "2026",
+    },
+  ];
+
   return (
     <div className="bg-white">
       <motion.section
@@ -356,6 +429,87 @@ export function ScholarshipPage() {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      <section className="px-4 py-8 md:px-6 lg:px-12 lg:py-12">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {scholars.map((scholar) => (
+              <article
+                key={`${scholar.name}-${scholar.year}`}
+                className="flex min-h-[380px] flex-col border border-black bg-white p-5 md:p-6"
+              >
+                <div className="mb-6 flex items-start justify-between gap-3">
+                  <h3
+                    className="text-[2.2rem] leading-[0.9] tracking-[-0.06em] text-black"
+                    style={{
+                      fontFamily: isEnglish
+                        ? "'Cormorant Garamond', serif"
+                        : "sans-serif",
+                    }}
+                  >
+                    {scholar.name}
+                  </h3>
+                  <span className="inline-flex h-12 min-w-[76px] items-center justify-center bg-black px-3 text-base font-medium text-white">
+                    {scholar.year}
+                  </span>
+                </div>
+
+                <div className="mt-auto space-y-5 border-t border-black/60 pt-4">
+                  <div className="space-y-2">
+                    <p
+                      className="text-[10px] font-medium uppercase tracking-[0.22em] text-gray-500"
+                      style={{
+                        fontFamily: isEnglish
+                          ? "'Work Sans', sans-serif"
+                          : "sans-serif",
+                      }}
+                    >
+                      {isEnglish ? "Branch" : "ਸ਼ਾਖਾ"}
+                    </p>
+                    <p className="text-base leading-relaxed text-black">
+                      {scholar.branch}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p
+                      className="text-[10px] font-medium uppercase tracking-[0.22em] text-gray-500"
+                      style={{
+                        fontFamily: isEnglish
+                          ? "'Work Sans', sans-serif"
+                          : "sans-serif",
+                      }}
+                    >
+                      {isEnglish ? "Institute" : "ਇੰਸਟੀਚਿਊਟ"}
+                    </p>
+                    <p className="text-base leading-relaxed text-black">
+                      {scholar.institute}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p
+                      className="text-[10px] font-medium uppercase tracking-[0.22em] text-gray-500"
+                      style={{
+                        fontFamily: isEnglish
+                          ? "'Work Sans', sans-serif"
+                          : "sans-serif",
+                      }}
+                    >
+                      {isEnglish ? "Donation Given" : "ਦਾਨ"}
+                    </p>
+                    <p className="text-base leading-relaxed text-black">
+                      {scholar.donation}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

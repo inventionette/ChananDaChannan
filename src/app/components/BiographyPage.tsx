@@ -228,7 +228,7 @@ const biographies: BiographyData[] = [
         heroParagraph: loremMed4,
         carouselImages: [
           { url: BASE + "image/biography1/a2.jpeg", alt: "Description of image", caption: "" },
-          { url: BASE + "image/biography1/fixedslide.png", alt: "Description of image", caption: "" },
+          { url: BASE + "image/biography1/fixedslide.jpeg", alt: "Description of image", caption: "" },
           { url: BASE + "image/biography1/as6.jpeg", alt: "Description of image", caption: "" },
           { url: BASE + "image/biography1/as7.jpeg", alt: "Description of image", caption: "" },
           { url: BASE + "image/biography1/as8.jpeg", alt: "Description of image", caption: "" },

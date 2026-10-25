@@ -36,45 +36,16 @@ interface FormData {
 
 export function ApplicationPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>(
-    [],
-  );
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    console.log("Uploaded files:", uploadedFiles);
-
-    // Note: In production, this would send data to Excel export backend
-    alert(
-      "Application submitted successfully! Data will be exported to Excel for review.",
-    );
-
+  const onSubmit = () => {
     setSubmitted(true);
-    setTimeout(() => {
-      reset();
-      setUploadedFiles([]);
-      setSubmitted(false);
-    }, 5000);
   };
-
-  /** const handleFileUpload = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const files = event.target.files;
-    if (files) {
-      const fileNames = Array.from(files).map(
-        (file) => file.name,
-      );
-      setUploadedFiles((prev) => [...prev, ...fileNames]);
-    }
-  }; */
 
   if (submitted) {
     return (
@@ -102,32 +73,15 @@ export function ApplicationPage() {
               fontFamily: "'Cormorant Garamond', serif",
             }}
           >
-            Application{" "}
-            <span className="italic">Received!</span>
+            Form{" "}
+            <span className="italic">Submitted</span>
           </h2>
           <p
             className="text-xl text-gray-600 mb-8"
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
-            Thank you for applying to the Commrade Gurmail Singh
-            Hunjan and Commrade Joginder Singh Scholarship. Your
-            application has been submitted and will be reviewed
-            by our selection committee.
-          </p>
-          <div className="bg-gray-50 border border-black/10 p-6 mb-8">
-            <p
-              className="text-sm text-gray-700"
-              style={{ fontFamily: "'Work Sans', sans-serif" }}
-            >
-              You will receive a confirmation email within 24
-              hours.
-            </p>
-          </div>
-          <p
-            className="text-gray-500"
-            style={{ fontFamily: "'Work Sans', sans-serif" }}
-          >
-            Redirecting to form...
+            Your scholarship application form has been submitted
+            successfully. Thank you for applying.
           </p>
         </motion.div>
       </div>
@@ -176,34 +130,14 @@ export function ApplicationPage() {
         <div className="container mx-auto max-w-4xl">
           {/* Image container */}
           <div className="mb-12 flex justify-center">
-            <div className="w-full max-w-md h-64 bg-gray-100 border-2 border-black/20 overflow-hidden">
+            <div className="w-full max-w-2xl h-80 sm:h-[32rem] overflow-hidden">
               <img
                 src={`${import.meta.env.BASE_URL}image/biography1/retry.JPG?v=grayscale`}
                 alt="Scholarship image"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
-
-          <div className="mb-10 border-2 border-black bg-gray-50 p-6 text-center">
-  <h2
-    className="text-2xl mb-2"
-    style={{
-      fontFamily: "'Cormorant Garamond', serif",
-    }}
-  >
-    Applications Not Available Yet
-  </h2>
-
-  <p
-    className="text-gray-700"
-    style={{
-      fontFamily: "'Work Sans', sans-serif",
-    }}
-  >
-    Scholarship applications are currently closed and will become available at a later date. Please check back for updates.
-  </p>
-</div>
 
           <motion.form
             initial={{ opacity: 0 }}
@@ -1155,8 +1089,15 @@ export function ApplicationPage() {
                 </p>
               )}
             </div>
-              
-           
+            <div className="flex justify-end pt-4">
+              <button
+                type="submit"
+                className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-colors uppercase tracking-wider"
+                style={{ fontFamily: "'Work Sans', sans-serif" }}
+              >
+                Submit Application
+              </button>
+            </div>
           </motion.form>
         </div>
       </section>

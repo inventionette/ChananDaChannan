@@ -282,21 +282,81 @@ const galleryVideos: GalleryVideo[] = [
 const galleryVideoSections = [
   {
     title: "Memories of Light Moments",
-    videos: galleryVideos.filter((video) => video.title.includes("Memories of Light Moments")),
-  },
-  {
-    title: "Cremation",
+    titlePa: "ਯਾਦਗਾਰ ਪਲ",
     videos: galleryVideos.filter(
-      (video) => video.title.includes("Cremation") || video.title.includes("Addressing a Rally")
+      (video) =>
+        video.title.includes("Memories of Light Moments") ||
+        video.title.includes("Addressing a Rally")
     ),
   },
   {
+    title: "Cremation",
+    titlePa: "ਅੰਤਿਮ ਸੰਸਕਾਰ",
+    videos: galleryVideos.filter((video) => video.title.includes("Cremation")),
+  },
+  {
     title: "Final Tribute Ceremony",
+    titlePa: "ਸ਼ਰਧਾਂਜਲੀ ਸਮਾਗਮ",
     videos: galleryVideos.filter((video) => video.title.includes("Final Tribute Ceremony")),
   },
 ];
 
+const finalTributeSpeakers: Record<number, string> = {
+  1: "ਕਾਮਰੇਡ ਕਰਤਾਰ ਸਿੰਘ ਬੁਆਣੀ ਦਾ ਆਰੰਭਕ ਭਾਸ਼ਣ",
+  3: "ਕਾਮਰੇਡ ਭਰਤ ਪ੍ਰਕਾਸ਼",
+  4: "ਬੇਅੰਤ ਸਿੰਘ",
+  5: "ਕਾਮਰੇਡ ਪਿਆਰਾ ਸਿੰਘ ਦਿਓਸੀ",
+  6: "ਕਾਮਰੇਡ ਰਸ਼ਪਾਲ ਸਿੰਘ",
+  7: "ਕਾਮਰੇਡ ਬੰਤ ਸਿੰਘ ਬਰਾੜ",
+  8: "ਕਾਮਰੇਡ ਜੋਗਿੰਦਰ ਦਿਆਲ",
+  9: "ਕਾਮਰੇਡ ਤੁਲਸੀ ਰਾਮ",
+  10: "ਪ੍ਰੋ: ਜਗਮੋਹਨ ਸਿੰਘ",
+  11: "ਕਾਮਰੇਡ ਭੁਪਿੰਦਰ ਸਾਂਬਰ",
+  12: "ਕਾਮਰੇਡ ਨਾਮਧਾਰੀ ਸੁਭਾ ਮੇਲਾ ਸਿੰਘ",
+  13: "ਕਾਮਰੇਡ ਕੁਲਦੀਪ ਸਿੰਘ",
+  14: "ਕਾਮਰੇਡ ਰੁਲਦੂ ਖਾਨ",
+  15: "ਕਾਮਰੇਡ ਸੁਖਿੰਦਰ ਸਿੰਘ",
+  16: "ਕਾਮਰੇਡ ਭਾਨ ਸਿੰਘ ਬੌਰਾ",
+  17: "ਕਾਮਰੇਡ ਓ ਪੀ ਮਹਿਤਾ",
+  18: "ਕਾਮਰੇਡ ਉਰਮਿਲਾ ਆਨੰਦ",
+  19: "ਕਾਮਰੇਡ ਡਾ. ਸ਼ਾਂਤੀ ਲਾਲ ਥਾਪਰ ਆਜ਼ਾਦੀ ਘੁਲਾਟੀਏ",
+  20: "ਕਾਮਰੇਡ ਕਰਮਜੀਤ ਕੌਰ",
+  21: "ਕਾਮਰੇਡ ਦਰਸ਼ਨ ਸਿੰਘ ਬੋਪਾਰਾਏ",
+  22: "ਕਾਮਰੇਡ ਕਰਤਾਰ ਸਿੰਘ ਬੁਆਣੀ",
+  23: "ਕਾਮਰੇਡ ਜਗਜੀਤ ਸਿੰਘ ਆਨੰਦ",
+  24: "ਕਾਮਰੇਡ ਚੰਨਣ ਸਿੰਘ ਬਰੋਲਾ",
+  25: "ਸਮਾਪਤੀ ਕਾਮਰੇਡ ਭਰਤ ਪ੍ਰਕਾਸ਼",
+};
+
+function getPunjabiVideoTitle(title: string): string {
+  const memoriesEpisode = title.match(/Memories of Light Moments - (\d\/4)$/)?.[1];
+  if (memoriesEpisode) {
+    return `ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ ਦੇ ਯਾਦਗਾਰ ਪਲ – ${memoriesEpisode}`;
+  }
+
+  if (title === "Comrade Gurmail Hunjan - Addressing a Rally") {
+    return "ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ ਇੱਕ ਜਨਤਕ ਰੈਲੀ ਨੂੰ ਸੰਬੋਧਨ ਕਰਦੇ ਹੋਏ";
+  }
+
+  const cremationEpisode = title.match(/Cremation - (\d\/6)$/)?.[1];
+  if (cremationEpisode) {
+    return `ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ ਅਤੇ ਜੋਗਿੰਦਰ ਸਿੰਘ ਦਾ ਸਸਕਾਰ – ${cremationEpisode}`;
+  }
+
+  const tributeEpisode = title.match(/Final Tribute Ceremony - (\d+)\/25/)?.[1];
+  if (tributeEpisode) {
+    const episode = Number(tributeEpisode);
+    const speaker = finalTributeSpeakers[episode];
+    const episodeLabel = `${episode}/25`;
+    return `ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ ਅਤੇ ਜੋਗਿੰਦਰ ਸਿੰਘ ਦਾ ਅੰਤਿਮ ਸ਼ਰਧਾਂਜਲੀ ਸਮਾਗਮ - ${episodeLabel}${speaker ? ` - ${speaker}` : ""}`;
+  }
+
+  return title;
+}
+
 function PhotoGrid({ images }: { images: GalleryImage[] }) {
+  const { language } = useTranslation();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {images.map((image, index) => (
@@ -311,7 +371,7 @@ function PhotoGrid({ images }: { images: GalleryImage[] }) {
           <div className="aspect-[4/3]">
             <img
               src={image.url}
-              alt={image.alt}
+              alt={language === "en" ? image.alt : "ਤਸਵੀਰ ਦਾ ਵੇਰਵਾ"}
               className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
@@ -321,7 +381,7 @@ function PhotoGrid({ images }: { images: GalleryImage[] }) {
               className="text-white text-sm font-medium"
               style={{ fontFamily: "'Work Sans', sans-serif" }}
             >
-              {image.caption}
+              {language === "en" ? image.caption : "ਤਸਵੀਰ ਦਾ ਵੇਰਵਾ"}
               {image.year && (
                 <span className="ml-2 text-white/60 text-xs">· {image.year}</span>
               )}
@@ -333,8 +393,13 @@ function PhotoGrid({ images }: { images: GalleryImage[] }) {
   );
 }
 
-function VideoSectionDropdown({ section }: { section: { title: string; videos: GalleryVideo[] } }) {
+function VideoSectionDropdown({
+  section,
+}: {
+  section: { title: string; titlePa: string; videos: GalleryVideo[] };
+}) {
   const [open, setOpen] = useState(true);
+  const { language } = useTranslation();
 
   return (
     <div className="mb-4 border border-black/10 bg-white shadow-sm">
@@ -345,7 +410,7 @@ function VideoSectionDropdown({ section }: { section: { title: string; videos: G
         style={{ fontFamily: "'Work Sans', sans-serif" }}
       >
         <span className="text-xs font-medium uppercase tracking-[0.22em] text-gray-600">
-          {section.title}
+          {language === "en" ? section.title : section.titlePa}
         </span>
         <ChevronDown
           className="w-4 h-4 text-gray-600 transition-transform duration-300"
@@ -383,6 +448,7 @@ function VideoSectionDropdown({ section }: { section: { title: string; videos: G
 }
 
 function VideoCard({ video }: { video: GalleryVideo }) {
+  const { language, t } = useTranslation();
   // Extract video ID from YouTube URL
   const getVideoId = (url: string) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -407,13 +473,13 @@ function VideoCard({ video }: { video: GalleryVideo }) {
         {thumbnailUrl ? (
           <img
             src={thumbnailUrl}
-            alt={video.title}
+            alt={language === "en" ? video.title : getPunjabiVideoTitle(video.title)}
             className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gray-200">
-            <span className="text-gray-400 text-sm">Video unavailable</span>
+            <span className="text-gray-400 text-sm">{t("gallery.videoUnavailable")}</span>
           </div>
         )}
         {/* Play overlay */}
@@ -424,7 +490,7 @@ function VideoCard({ video }: { video: GalleryVideo }) {
         </div>
         {/* YouTube branding */}
         <div className="absolute bottom-2 right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded font-medium">
-          YouTube
+          {t("gallery.youtube")}
         </div>
       </a>
       
@@ -435,7 +501,7 @@ function VideoCard({ video }: { video: GalleryVideo }) {
             className="text-base font-medium"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem" }}
           >
-            {video.title}
+            {language === "en" ? video.title : getPunjabiVideoTitle(video.title)}
           </h4>
           {video.year && (
             <span
@@ -458,7 +524,7 @@ function VideoCard({ video }: { video: GalleryVideo }) {
 }
 
 export function GalleryPage() {
-  const { language, t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="bg-white">
@@ -480,7 +546,7 @@ export function GalleryPage() {
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
             }}
           >
-            {language === "en" ? t("gallery.hero.title") : "ਯਾਦਾਂ"}
+            {t("gallery.hero.title")}
           </motion.h1>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -495,7 +561,7 @@ export function GalleryPage() {
             className="text-sm md:text-base text-gray-600 max-w-xl mx-auto"
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
-            {language === "en" ? t("gallery.hero.subtitle") : "ਇਸ ਸਕਾਲਰਸ਼ਿਪ, ਇਸਦੇ ਸਥਾਪਕਾਂ ਅਤੇ ਇਸ ਦੇ ਰੂਪ ਵਿੱਚ ਆਏ ਜੀਵਨ ਦੀ ਦਿੱਖੀ ਰਿਕਾਰਡ।"}
+            {t("gallery.hero.subtitle")}
           </motion.p>
         </div>
       </motion.section>
@@ -514,7 +580,7 @@ export function GalleryPage() {
                 className="text-2xl md:text-3xl mb-2"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                {language === "en" ? t("gallery.photos.title") : "ਫੋਟੋ"}
+                {t("gallery.photos.title")}
               </h2>
               <div className="w-12 h-0.5 bg-black" />
             </div>
@@ -544,7 +610,7 @@ export function GalleryPage() {
                 className="text-2xl md:text-3xl mb-2"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                Videos
+                {t("gallery.videos.title")}
               </h2>
               <div className="w-12 h-0.5 bg-black" />
             </div>

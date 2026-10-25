@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { HistoricalDivider, SectionDivider } from "./HistoricalDivider";
 
 export function ScholarshipPage() {
-  const { language } = useTranslation();
+  const { language, t } = useTranslation();
   const isEnglish = language === "en";
 
   const eligibility = isEnglish
@@ -110,73 +110,124 @@ export function ScholarshipPage() {
 
   const scholars = [
     {
-      name: "Jaspreet Singh",
-      institute: "Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib, Punjab",
-      branch: "Electrical Engineering",
+      name: "Harpreet Singh",
+      namePa: "ਹਰਪ੍ਰੀਤ ਸਿੰਘ",
+      institute: "Desh Bhagat Polytechnical College, Dhuri, Punjab",
+      institutePa: "ਦੇਸ਼ ਭਗਤ ਪੌਲੀਟੈਕਨਿਕ ਕਾਲਜ, ਧੂਰੀ, ਪੰਜਾਬ",
+      branch: "Automobile Engineering",
+      branchPa: "ਆਟੋਮੋਬਾਈਲ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "Full course fee",
+      donationPa: "ਪੂਰੇ ਕੋਰਸ ਦੀ ਫੀਸ",
+      year: "2011",
+    },
+    {
+      name: "Jaspreet Singh",
+      namePa: "ਜਸਪ੍ਰੀਤ ਸਿੰਘ",
+      institute: "Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib, Punjab",
+      institutePa: "ਬਾਬਾ ਬੰਦਾ ਸਿੰਘ ਬਹਾਦਰ ਇੰਜੀਨੀਅਰਿੰਗ ਕਾਲਜ, ਫਤਹਿਗੜ੍ਹ ਸਾਹਿਬ, ਪੰਜਾਬ",
+      branch: "Electrical Engineering",
+      branchPa: "ਇਲੈਕਟ੍ਰੀਕਲ ਇੰਜੀਨੀਅਰਿੰਗ",
+      donation: "Full course fee",
+      donationPa: "ਪੂਰੇ ਕੋਰਸ ਦੀ ਫੀਸ",
       year: "2013",
     },
     {
       name: "Loveleen Kaur",
+      namePa: "ਲਵਲੀਨ ਕੌਰ",
       institute: "Guru Nanak Dev Polytechnic College, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਪੌਲੀਟੈਕਨਿਕ ਕਾਲਜ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Computer Engineering",
+      branchPa: "ਕੰਪਿਊਟਰ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "Full course fee",
+      donationPa: "ਪੂਰੇ ਕੋਰਸ ਦੀ ਫੀਸ",
       year: "2015",
     },
     {
       name: "Simranjit Kaur",
+      namePa: "ਸਿਮਰਨਜੀਤ ਕੌਰ",
       institute: "Shaheed Kartar Singh Sarabha College of Nursing, Sarabha, Ludhiana, Punjab",
-      branch: "General Nursing and Midwife",
+      institutePa: "ਸ਼ਹੀਦ ਕਰਤਾਰ ਸਿੰਘ ਸਰਾਭਾ ਕਾਲਜ ਆਫ਼ ਨਰਸਿੰਗ, ਸਰਾਭਾ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
+      branch: "General Nursing and Midwifery",
+      branchPa: "ਜਨਰਲ ਨਰਸਿੰਗ ਅਤੇ ਮਿਡਵਾਈਫਰੀ",
       donation: "One semester fee",
+      donationPa: "ਇੱਕ ਸਮੈਸਟਰ ਦੀ ਫੀਸ",
       year: "2016",
     },
     {
       name: "Harmeet Singh",
+      namePa: "ਹਰਮੀਤ ਸਿੰਘ",
       institute: "Guru Nanak Dev Polytechnic College, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਪੌਲੀਟੈਕਨਿਕ ਕਾਲਜ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Electronic Engineering",
+      branchPa: "ਇਲੈਕਟ੍ਰਾਨਿਕ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "One semester fee",
+      donationPa: "ਇੱਕ ਸਮੈਸਟਰ ਦੀ ਫੀਸ",
       year: "2017",
     },
     {
       name: "Loveleen Kaur",
+      namePa: "ਲਵਲੀਨ ਕੌਰ",
       institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਇੰਜੀਨੀਅਰਿੰਗ ਕਾਲਜ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Computer Engineering",
+      branchPa: "ਕੰਪਿਊਟਰ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "Full course fee",
+      donationPa: "ਪੂਰੇ ਕੋਰਸ ਦੀ ਫੀਸ",
       year: "2018",
     },
     {
       name: "Taranpreet Kaur",
-      institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      namePa: "ਤਰਨਪ੍ਰੀਤ ਕੌਰ",
+      institute: "Guru Nanak Dev Polytechnic College, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਪੌਲੀਟੈਕਨਿਕ ਕਾਲਜ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Electrical Engineering",
+      branchPa: "ਇਲੈਕਟ੍ਰੀਕਲ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "One semester fee",
+      donationPa: "ਇੱਕ ਸਮੈਸਟਰ ਦੀ ਫੀਸ",
       year: "2019",
     },
     {
       name: "Husanpreet Kaur",
+      namePa: "ਹੁਸਨਪ੍ਰੀਤ ਕੌਰ",
       institute: "Guru Hargobind Khalsa College, Gurasar Sudhar, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਹਰਿਗੋਬਿੰਦ ਖ਼ਾਲਸਾ ਕਾਲਜ, ਗੁਰਸਰ ਸੁਧਾਰ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Bachelor of Science",
+      branchPa: "ਬੈਚਲਰ ਆਫ਼ ਸਾਇੰਸ",
       donation: "Full course fee",
+      donationPa: "ਪੂਰੇ ਕੋਰਸ ਦੀ ਫੀਸ",
       year: "2023",
     },
     {
       name: "Pardeep Kumar",
+      namePa: "ਪ੍ਰਦੀਪ ਕੁਮਾਰ",
       institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਇੰਜੀਨੀਅਰਿੰਗ ਕਾਲਜ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Civil Engineering",
+      branchPa: "ਸਿਵਲ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "One semester fee",
+      donationPa: "ਇੱਕ ਸਮੈਸਟਰ ਦੀ ਫੀਸ",
       year: "2024",
     },
     {
       name: "Abhinav Kumar",
+      namePa: "ਅਭਿਨਵ ਕੁਮਾਰ",
       institute: "Guru Nanak Dev Engineering College, Ludhiana, Punjab",
+      institutePa: "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਇੰਜੀਨੀਅਰਿੰਗ ਕਾਲਜ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Civil Engineering",
+      branchPa: "ਸਿਵਲ ਇੰਜੀਨੀਅਰਿੰਗ",
       donation: "One semester fee",
+      donationPa: "ਇੱਕ ਸਮੈਸਟਰ ਦੀ ਫੀਸ",
       year: "2025",
     },
     {
       name: "Husanpreet Kaur",
+      namePa: "ਹੁਸਨਪ੍ਰੀਤ ਕੌਰ",
       institute: "Punjab Agriculture University, Ludhiana, Punjab",
+      institutePa: "ਪੰਜਾਬ ਖੇਤੀਬਾੜੀ ਯੂਨੀਵਰਸਿਟੀ, ਲੁਧਿਆਣਾ, ਪੰਜਾਬ",
       branch: "Master of Science",
+      branchPa: "ਮਾਸਟਰ ਆਫ਼ ਸਾਇੰਸ",
       donation: "Full course fee",
+      donationPa: "ਪੂਰੇ ਕੋਰਸ ਦੀ ਫੀਸ",
       year: "2026",
     },
   ];
@@ -436,6 +487,14 @@ export function ScholarshipPage() {
 
       <section className="px-4 py-8 md:px-6 lg:px-12 lg:py-12">
         <div className="container mx-auto max-w-6xl">
+          <h2
+            className="mb-8 text-center text-2xl md:text-3xl"
+            style={{
+              fontFamily: isEnglish ? "'Cormorant Garamond', serif" : "sans-serif",
+            }}
+          >
+            {t("common.ourScholars")}
+          </h2>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {scholars.map((scholar) => (
               <article
@@ -451,7 +510,7 @@ export function ScholarshipPage() {
                         : "sans-serif",
                     }}
                   >
-                    {scholar.name}
+                    {isEnglish ? scholar.name : scholar.namePa}
                   </h3>
                   <span className="inline-flex h-12 min-w-[76px] items-center justify-center bg-black px-3 text-base font-medium text-white">
                     {scholar.year}
@@ -471,7 +530,7 @@ export function ScholarshipPage() {
                       {isEnglish ? "Branch" : "ਸ਼ਾਖਾ"}
                     </p>
                     <p className="text-base leading-relaxed text-black">
-                      {scholar.branch}
+                      {isEnglish ? scholar.branch : scholar.branchPa}
                     </p>
                   </div>
 
@@ -487,7 +546,7 @@ export function ScholarshipPage() {
                       {isEnglish ? "Institute" : "ਇੰਸਟੀਚਿਊਟ"}
                     </p>
                     <p className="text-base leading-relaxed text-black">
-                      {scholar.institute}
+                      {isEnglish ? scholar.institute : scholar.institutePa}
                     </p>
                   </div>
 
@@ -503,7 +562,7 @@ export function ScholarshipPage() {
                       {isEnglish ? "Donation Given" : "ਦਾਨ"}
                     </p>
                     <p className="text-base leading-relaxed text-black">
-                      {scholar.donation}
+                      {isEnglish ? scholar.donation : scholar.donationPa}
                     </p>
                   </div>
                 </div>

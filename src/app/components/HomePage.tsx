@@ -1,28 +1,75 @@
 import { motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Link } from "react-router";
 import { HistoricalDivider, SectionDivider } from "./HistoricalDivider";
 import { useTranslation } from "../context/TranslationContext";
 
 export function HomePage() {
   const { language, t } = useTranslation();
-  const historicalPhotos = [
-    { url: "", alt: "Historical photograph", caption: "Early days of education, circa 1950" },
-    { url: "", alt: "Historical photograph", caption: "Students in classroom, 1960s" },
-    { url: "", alt: "Historical photograph", caption: "Community gathering, 1970" },
+  const story =
+    language === "en"
+      ? "Chanan Da Channan is a tribute to the life, ideals, and legacy of Comrade Chanan Singh Barola and Comrade Gurmail Singh Hunjan. It seeks to preserve their memories, celebrate their contributions, and share the values that inspired their life's journeys. We believe the true value of a life lies in its contribution to society. Inspired by equality, compassion, honesty, and selfless service, we aim to keep alive a legacy that encourages future generations to work toward a fair and equal society. Through photographs, personal memories, and stories, we document important moments from Comrade Gurmail Singh Hunjan's life. We also highlight the importance of education and scholarship opportunities in helping deserving students overcome financial barriers and achieve their aspirations. By preserving history, sharing experiences, and supporting educational opportunities, we seek to inspire people to carry forward the values of humanity, social responsibility, equity, and equality. Our aim is to turn remembrance into inspiration and ideals into meaningful action. A legacy lives on not only through the memories we preserve, but also through the positive difference we make in the lives of others."
+      : "ਚੰਨਣ ਦਾ ਚਾਨਣ ਕਾਮਰੇਡ ਚੰਨਣ ਸਿੰਘ ਬਰੋਲਾ ਅਤੇ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੇ ਜੀਵਨ, ਆਦਰਸ਼ਾਂ ਅਤੇ ਵਿਰਾਸਤ ਨੂੰ ਸਮਰਪਿਤ ਹੈ। ਇਹ ਉਨ੍ਹਾਂ ਦੀਆਂ ਯਾਦਾਂ ਨੂੰ ਸੰਭਾਲਣ, ਉਨ੍ਹਾਂ ਦੇ ਯੋਗਦਾਨਾਂ ਦਾ ਸਨਮਾਨ ਕਰਨ ਅਤੇ ਉਨ੍ਹਾਂ ਦੇ ਜੀਵਨ-ਸਫ਼ਰ ਤੋਂ ਪ੍ਰੇਰਿਤ ਕਦਰਾਂ-ਕੀਮਤਾਂ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਦਾ ਯਤਨ ਕਰਦਾ ਹੈ। ਸਾਡਾ ਵਿਸ਼ਵਾਸ ਹੈ ਕਿ ਜੀਵਨ ਦਾ ਅਸਲ ਮੁੱਲ ਸਮਾਜ ਲਈ ਉਸਦੇ ਯੋਗਦਾਨ ਵਿੱਚ ਹੈ। ਬਰਾਬਰੀ, ਹਮਦਰਦੀ, ਇਮਾਨਦਾਰੀ ਅਤੇ ਨਿਸ਼ਕਾਮ ਸੇਵਾ ਦੇ ਸਿਧਾਂਤਾਂ ਤੋਂ ਪ੍ਰੇਰਿਤ ਹੋ ਕੇ, ਅਸੀਂ ਅਜਿਹੀ ਵਿਰਾਸਤ ਨੂੰ ਜਿਉਂਦਾ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹਾਂ ਜੋ ਆਉਣ ਵਾਲੀਆਂ ਪੀੜ੍ਹੀਆਂ ਨੂੰ ਨਿਆਂਪੂਰਨ ਅਤੇ ਬਰਾਬਰੀ ਵਾਲਾ ਸਮਾਜ ਬਣਾਉਣ ਲਈ ਉਤਸ਼ਾਹਿਤ ਕਰੇ। ਤਸਵੀਰਾਂ, ਨਿੱਜੀ ਯਾਦਾਂ ਅਤੇ ਕਹਾਣੀਆਂ ਰਾਹੀਂ ਅਸੀਂ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੇ ਜੀਵਨ ਦੇ ਮਹੱਤਵਪੂਰਨ ਪਲ ਦਰਜ ਕਰਦੇ ਹਾਂ। ਅਸੀਂ ਯੋਗ ਵਿਦਿਆਰਥੀਆਂ ਨੂੰ ਆਰਥਿਕ ਰੁਕਾਵਟਾਂ ਪਾਰ ਕਰਕੇ ਆਪਣੇ ਸੁਪਨੇ ਪੂਰੇ ਕਰਨ ਵਿੱਚ ਮਦਦ ਲਈ ਸਿੱਖਿਆ ਅਤੇ ਵਜ਼ੀਫ਼ਿਆਂ ਦੇ ਮੌਕਿਆਂ ਦੀ ਮਹੱਤਤਾ ਵੀ ਉਜਾਗਰ ਕਰਦੇ ਹਾਂ। ਇਤਿਹਾਸ ਸੰਭਾਲ ਕੇ, ਤਜਰਬੇ ਸਾਂਝੇ ਕਰਕੇ ਅਤੇ ਸਿੱਖਿਆ ਦੇ ਮੌਕਿਆਂ ਨੂੰ ਸਹਾਰਾ ਦੇ ਕੇ, ਅਸੀਂ ਲੋਕਾਂ ਨੂੰ ਮਨੁੱਖਤਾ, ਸਮਾਜਿਕ ਜ਼ਿੰਮੇਵਾਰੀ ਅਤੇ ਬਰਾਬਰੀ ਦੀਆਂ ਕਦਰਾਂ ਨੂੰ ਅੱਗੇ ਲਿਜਾਣ ਲਈ ਪ੍ਰੇਰਿਤ ਕਰਦੇ ਹਾਂ। ਸਾਡਾ ਉਦੇਸ਼ ਯਾਦਾਂ ਨੂੰ ਪ੍ਰੇਰਣਾ ਅਤੇ ਆਦਰਸ਼ਾਂ ਨੂੰ ਅਰਥਪੂਰਨ ਕਾਰਜ ਵਿੱਚ ਬਦਲਣਾ ਹੈ। ਵਿਰਾਸਤ ਸਿਰਫ਼ ਸੰਭਾਲੀਆਂ ਯਾਦਾਂ ਰਾਹੀਂ ਹੀ ਨਹੀਂ, ਸਗੋਂ ਹੋਰਨਾਂ ਦੇ ਜੀਵਨ ਵਿੱਚ ਲਿਆਂਦੇ ਸਕਾਰਾਤਮਕ ਬਦਲਾਅ ਰਾਹੀਂ ਵੀ ਜਿਉਂਦੀ ਰਹਿੰਦੀ ਹੈ।";
+  const milestones = [
+    {
+      year: "1918",
+      event: "Comrade Chanan Singh Barola was born",
+      eventPa: "ਕਾਮਰੇਡ ਚੰਨਣ ਸਿੰਘ ਬਰੋਲਾ ਦਾ ਜਨਮ ਹੋਇਆ",
+    },
+    {
+      year: "1942",
+      event: "Comrade Barola joined India's freedom movement through the Quit India Movement",
+      eventPa: "ਕਾਮਰੇਡ ਬਰੋਲਾ ਨੇ ਭਾਰਤ ਛੱਡੋ ਅੰਦੋਲਨ ਰਾਹੀਂ ਆਜ਼ਾਦੀ ਦੀ ਲਹਿਰ ਵਿੱਚ ਹਿੱਸਾ ਲਿਆ",
+    },
+    {
+      year: "1951",
+      event: "Comrade Gurmail Singh Hunjan was born",
+      eventPa: "ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦਾ ਜਨਮ ਹੋਇਆ",
+    },
+    {
+      year: "1972",
+      event: "Comrade Barola was elected village head (sarpanch)",
+      eventPa: "ਕਾਮਰੇਡ ਬਰੋਲਾ ਪਿੰਡ ਦੇ ਸਰਪੰਚ ਚੁਣੇ ਗਏ",
+    },
+    {
+      year: "1977",
+      event: "Comrade Hunjan graduated with a Master's in Political Science",
+      eventPa: "ਕਾਮਰੇਡ ਹੂੰਝਣ ਨੇ ਰਾਜਨੀਤਿਕ ਵਿਗਿਆਨ ਵਿੱਚ ਮਾਸਟਰ ਡਿਗਰੀ ਪ੍ਰਾਪਤ ਕੀਤੀ",
+    },
+    {
+      year: "1982",
+      event: "Comrade Hunjan became village head (sarpanch)",
+      eventPa: "ਕਾਮਰੇਡ ਹੂੰਝਣ ਪਿੰਡ ਦੇ ਸਰਪੰਚ ਬਣੇ",
+    },
+    {
+      year: "1983",
+      event: "Comrade Hunjan became assistant secretary of the CPI in Ludhiana district",
+      eventPa: "ਕਾਮਰੇਡ ਹੂੰਝਣ ਲੁਧਿਆਣਾ ਜ਼ਿਲ੍ਹੇ ਵਿੱਚ ਸੀ.ਪੀ.ਆਈ. ਦੇ ਸਹਾਇਕ ਸਕੱਤਰ ਬਣੇ",
+    },
+    {
+      year: "1989",
+      event: "Comrade Hunjan was killed by Khalistani terrorists",
+      eventPa: "ਕਾਮਰੇਡ ਹੂੰਝਣ ਖਾਲਿਸਤਾਨੀ ਅੱਤਵਾਦੀਆਂ ਵੱਲੋਂ ਸ਼ਹੀਦ ਕੀਤੇ ਗਏ",
+    },
+    {
+      year: "2000",
+      event: "Comrade Barola passed away",
+      eventPa: "ਕਾਮਰੇਡ ਬਰੋਲਾ ਦਾ ਦੇਹਾਂਤ ਹੋਇਆ",
+    },
+    {
+      year: "2011",
+      event: "The scholarship program began informally",
+      eventPa: "ਵਜ਼ੀਫ਼ਾ ਪ੍ਰੋਗਰਾਮ ਗੈਰ-ਰਸਮੀ ਤੌਰ 'ਤੇ ਸ਼ੁਰੂ ਹੋਇਆ",
+    },
   ];
 
   const founders = [
     {
       name: "Comrade Gurmail Hunjan",
       years: "1951-1989",
-      role: "Freedom Fighter",
-      photos: [
-        { url: "", caption: "Portrait photograph", year: "1965" },
-      ],
+      role: "People's Leader",
       biography: [
-        "Comrade Gurmail Singh Hunjan was a leader for the people. He lived, worked, and gave his life for the unity, integrity, and humanity of Punjab and India.",
+        "Comrade Gurmail Singh Hunjan was a people's leader. He lived, worked, and gave his life for the unity, integrity, and humanity of Punjab and India.",
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
         "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
       ]
@@ -73,19 +120,10 @@ export function HomePage() {
           >
             {t('home.quote')}
           </motion.p>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-sm uppercase tracking-widest text-gray-500 mb-8"
-            style={{ fontFamily: "'Work Sans', sans-serif" }}
-          >
-            {t('home.established')}
-          </motion.p>
         </div>
       </motion.section>
 
-      {/* Historical Overview - Compact */}
+      {/* Our Story */}
       <section className="py-8 md:py-12 px-4 md:px-6 lg:px-12 bg-white">
         <div className="container mx-auto max-w-5xl">
           <motion.div
@@ -96,43 +134,18 @@ export function HomePage() {
           >
             <h2 className="text-center mb-6 md:mb-8" style={{ fontFamily: language === 'en' ? "'Cormorant Garamond', serif" : "sans-serif", fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
               {language === 'en' ? (
-                <>Historical <span className="italic">Overview</span></>
+                <>Our <span className="italic">Story</span></>
               ) : (
-                <>ਇਤਿਹਾਸਕ <span className="italic">ਸੰਖੇਪ</span></>
+                <>ਸਾਡੀ <span className="italic">ਕਹਾਣੀ</span></>
               )}
             </h2>
 
             <div className="prose prose-lg max-w-none" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3 md:mb-4 first-letter:text-4xl first-letter:font-serif first-letter:float-left first-letter:mr-2 first-letter:leading-none first-letter:mt-1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </p>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3 md:mb-4">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed first-letter:text-4xl first-letter:font-serif first-letter:float-left first-letter:mr-2 first-letter:leading-none first-letter:mt-1">
+                {story}
               </p>
             </div>
 
-            {/* Historical Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="mt-6 md:mt-8"
-            >
-              <div className="aspect-[16/9] md:aspect-[21/9] bg-gray-100 border-2 border-black/20 overflow-hidden">
-                <ImageWithFallback
-                  src="/images/main.jpeg"
-                  alt="Historical photograph"
-                  className="w-full h-full object-cover grayscale"
-                />
-              </div>
-              <p className="mt-2 text-xs text-gray-600 italic text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                Historical documentation, circa 1995
-              </p>
-            </motion.div>
           </motion.div>
 
           <HistoricalDivider />
@@ -153,14 +166,7 @@ export function HomePage() {
               )}
             </h3>
             <div className="space-y-4 md:space-y-6 border-l-2 border-black/20 pl-6 md:pl-8 ml-3 md:ml-4">
-              {[
-                { year: "1995", event: "Lorem ipsum dolor sit amet, consectetur adipiscing elit foundation established" },
-                { year: "2000", event: "Sed do eiusmod tempor incididunt ut labore expansion program initiated" },
-                { year: "2005", event: "Duis aute irure dolor milestone achievement recognized" },
-                { year: "2010", event: "Excepteur sint occaecat cupidatat non proident partnership formed" },
-                { year: "2015", event: "Nemo enim ipsam voluptatem quia celebration of two decades" },
-                { year: "2020", event: "Neque porro quisquam est digital transformation completed" }
-              ].map((milestone, idx) => (
+              {milestones.map((milestone, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
@@ -175,54 +181,9 @@ export function HomePage() {
                       {milestone.year}
                     </span>
                     <p className="text-gray-700 text-xs md:text-sm leading-relaxed" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-                      {milestone.event}
+                      {language === "en" ? milestone.event : milestone.eventPa}
                     </p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Photo Gallery - More Compact */}
-      <section className="py-8 md:py-12 px-4 md:px-6 lg:px-12 bg-gray-50">
-        <div className="container mx-auto max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h3 className="text-center text-xl md:text-2xl mb-6 md:mb-8" style={{ fontFamily: language === 'en' ? "'Cormorant Garamond', serif" : "sans-serif" }}>
-              {language === 'en' ? (
-                <>Photographic <span className="italic">Archives</span></>
-              ) : (
-                <>ਫੋਟੋ <span className="italic">ਆਰਕਾਈਵਜ਼</span></>
-              )}
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-3">
-              {historicalPhotos.map((photo, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05, duration: 0.4 }}
-                  className="group"
-                >
-                  <div className="relative aspect-square overflow-hidden bg-gray-200 border-2 border-black/20">
-                    <ImageWithFallback
-                      src={photo.url}
-                      alt={photo.alt}
-                      className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <p className="mt-2 text-xs text-gray-600 italic text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {photo.caption}
-                  </p>
                 </motion.div>
               ))}
             </div>
@@ -250,9 +211,6 @@ export function HomePage() {
               )}
             </h2>
             <div className="w-24 h-1 bg-black mx-auto mb-4"></div>
-            <p className="text-sm md:text-base text-gray-600 max-w-3xl mx-auto px-4" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
           </motion.div>
 
           <div className="flex justify-center">
@@ -265,15 +223,6 @@ export function HomePage() {
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
                 className="bg-white shadow-xl p-10 md:p-12 border-t-4 border-black w-full max-w-3xl mx-auto"
               >
-                {/* Portrait */}
-                <div className="aspect-[4/5] bg-gray-100 border-2 border-black/20 overflow-hidden mb-6">
-                  <ImageWithFallback
-                    src={founder.photos[0].url}
-                    alt={founder.name}
-                    className="w-full h-full object-cover grayscale"
-                  />
-                </div>
-
                 {/* Details */}
                 <div className="mb-4">
                   <h3 className="text-2xl md:text-3xl mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -327,11 +276,10 @@ export function HomePage() {
               )}
             </h3>
             <div className="prose max-w-none" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3 md:mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
               <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {language === "en"
+                  ? "The legacy of Comrade Chanan Singh Barola and Comrade Gurmail Singh Hunjan lives on through the values they stood for and the lives they touched. Through scholarships and educational support, we aim to carry forward their commitment to equality, selfless service, and a brighter future for deserving students. Their ideals continue to inspire future generations to learn, grow, and contribute to society."
+                  : "ਕਾਮਰੇਡ ਚੰਨਣ ਸਿੰਘ ਬਰੋਲਾ ਅਤੇ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੀ ਵਿਰਾਸਤ ਉਨ੍ਹਾਂ ਦੇ ਸਿਧਾਂਤਾਂ ਅਤੇ ਉਨ੍ਹਾਂ ਵੱਲੋਂ ਪ੍ਰਭਾਵਿਤ ਕੀਤੀਆਂ ਜ਼ਿੰਦਗੀਆਂ ਰਾਹੀਂ ਅੱਜ ਵੀ ਜਿਉਂਦੀ ਹੈ। ਵਜ਼ੀਫ਼ਿਆਂ ਅਤੇ ਸਿੱਖਿਆਈ ਸਹਾਇਤਾ ਰਾਹੀਂ, ਅਸੀਂ ਬਰਾਬਰੀ, ਨਿਸ਼ਕਾਮ ਸੇਵਾ ਅਤੇ ਯੋਗ ਵਿਦਿਆਰਥੀਆਂ ਲਈ ਉਜਲੇ ਭਵਿੱਖ ਪ੍ਰਤੀ ਉਨ੍ਹਾਂ ਦੀ ਵਚਨਬੱਧਤਾ ਨੂੰ ਅੱਗੇ ਵਧਾਉਣ ਦਾ ਯਤਨ ਕਰਦੇ ਹਾਂ। ਉਨ੍ਹਾਂ ਦੇ ਆਦਰਸ਼ ਆਉਣ ਵਾਲੀਆਂ ਪੀੜ੍ਹੀਆਂ ਨੂੰ ਸਿੱਖਣ, ਅੱਗੇ ਵਧਣ ਅਤੇ ਸਮਾਜ ਵਿੱਚ ਯੋਗਦਾਨ ਪਾਉਣ ਲਈ ਪ੍ਰੇਰਿਤ ਕਰਦੇ ਰਹਿੰਦੇ ਹਨ।"}
               </p>
             </div>
             <div className="text-center mt-6 md:mt-8">
@@ -348,30 +296,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA - Compact */}
-      <section className="py-10 md:py-12 px-4 md:px-6 lg:px-12 bg-black text-white">
-        <div className="container mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl md:text-3xl mb-4" style={{ fontFamily: language === 'en' ? "'Cormorant Garamond', serif" : "sans-serif" }}>
-            {language === 'en' ? (
-              <>Continue the <span className="italic">Legacy</span></>
-            ) : (
-              <>ਵਿਰਾਸਤ <span className="italic">ਜਾਰੀ ਰੱਖੋ</span></>
-            )}
-          </h2>
-          <div className="w-16 h-px bg-white/30 mx-auto mb-4 md:mb-6"></div>
-          <p className="text-gray-300 mb-6 text-xs md:text-sm px-4" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-            Join us in supporting the next generation of scholars
-          </p>
-          <Link
-            to="/apply"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors group text-sm uppercase tracking-wider"
-            style={{ fontFamily: "'Work Sans', sans-serif" }}
-          >
-            {t('common.apply')}
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

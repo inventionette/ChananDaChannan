@@ -24,7 +24,7 @@ export function RootLayout() {
   const navLinks = [
     { to: "/gallery", label: language === "en" ? "Gallery" : "ਯਾਦਾਂ" },
     { to: "/scholarship", label: t("nav.scholarship") },
-    { to: "/about", label: t("nav.about") }, // About moved to the end
+    { to: "/about", label: t("nav.about") },
   ];
 
   const biographyLinks = [
@@ -107,13 +107,6 @@ export function RootLayout() {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full mt-2 left-0 bg-white border border-black/10 shadow-lg min-w-[200px] z-50"
                     >
-                      <Link
-                        to="/"
-                        className="block px-4 py-3 text-sm hover:bg-gray-100 transition-colors border-b border-black/5"
-                        style={{ fontFamily: "'Work Sans', sans-serif" }}
-                      >
-                        {t("nav.biographyOverview")}
-                      </Link>
                       {biographyLinks.map((link) => (
                         <Link
                           key={link.to}
@@ -346,13 +339,6 @@ export function RootLayout() {
                           transition={{ duration: 0.2 }}
                           className="overflow-hidden bg-gray-50 mt-2 rounded"
                         >
-                          <Link
-                            to="/"
-                            className="block text-base py-2 px-4 hover:bg-gray-100 transition-colors border-b border-black/5"
-                            style={{ fontFamily: "'Work Sans', sans-serif" }}
-                          >
-                            {t("nav.biographyOverview")}
-                          </Link>
                           {biographyLinks.map((link) => (
                             <Link
                               key={link.to}

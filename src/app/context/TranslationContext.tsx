@@ -15,10 +15,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'site.brand': 'Chanan Da Chaanan',
     'nav.biography': 'Biography',
-    'nav.biographyOverview': 'Overview',
     'nav.founder1': 'Comrade Gurmail Hunjan',
     'nav.founder2': 'Founder 2 Biography',
-    'nav.about': 'About',
+    'nav.about': 'About Us',
     'nav.scholarship': 'Scholarship',
     'nav.apply': 'Apply',
 
@@ -40,13 +39,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Home Page
     'home.hero.title': 'Chanan Da Chaanan',
     'home.quote': '"Education is the most powerful weapon which you can use to change the world"',
-    'home.established': 'Est. 1995',
-    'home.historicalOverview': 'Historical Overview',
     'home.keyMilestones': 'Key Milestones',
-    'home.photographicArchives': 'Photographic Archives',
     'home.theFounders': 'Biography',
     'home.livingLegacy': 'The Living Legacy',
-    'home.continueLegacy': 'Continue the Legacy',
     'home.exploreScholarships': 'Explore Scholarships',
 
     // Gallery Page
@@ -134,7 +129,6 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'site.brand': 'ਚੰਨਣ ਦਾ ਚਾਨਣ',
     'nav.biography': 'ਜੀਵਨੀ',
-    'nav.biographyOverview': 'ਸੰਖੇਪ',
     'nav.founder1': 'ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ',
     'nav.founder2': 'ਸੰਸਥਾਪਕ 2 ਜੀਵਨੀ',
     'nav.about': 'ਸਾਡੇ ਬਾਰੇ',
@@ -149,7 +143,7 @@ const translations: Record<Language, Record<string, string>> = {
     'common.applyScholarship': 'ਸਕਾਲਰਸ਼ਿਪ ਲਈ ਅਪਲਾਈ ਕਰੋ',
     'common.contact': 'ਸੰਪਰਕ',
     'common.scholars': 'ਵਿਦਿਆਰਥੀ',
-    'common.ourScholars': 'ਸਾਡੇ ਵਿਦਿਆਰਥੀ',
+    'common.ourScholars': 'ਸਾਡੇ ਵਜ਼ੀਫ਼ਾ ਪ੍ਰਾਪਤ ਵਿਦਿਆਰਥੀ',
     'common.earlyLife': 'ਸ਼ੁਰੂਆਤੀ ਜੀਵਨ',
     'common.career': 'ਕਰੀਅਰ ਅਤੇ ਪ੍ਰਾਪਤੀਆਂ',
     'common.legacy': 'ਵਿਰਾਸਤ ਅਤੇ ਪ੍ਰਭਾਵ',
@@ -159,22 +153,18 @@ const translations: Record<Language, Record<string, string>> = {
     // Home Page
     'home.hero.title': 'ਚੰਨਣ ਦਾ ਚਾਨਣ',
     'home.quote': '"ਸਿੱਖਿਆ ਸਭ ਤੋਂ ਸ਼ਕਤੀਸ਼ਾਲੀ ਹਥਿਆਰ ਹੈ ਜਿਸਨੂੰ ਤੁਸੀਂ ਦੁਨੀਆ ਬਦਲਣ ਲਈ ਵਰਤ ਸਕਦੇ ਹੋ"',
-    'home.established': 'ਸਥਾਪਿਤ 1995',
-    'home.historicalOverview': 'ਇਤਿਹਾਸਕ ਸੰਖੇਪ',
     'home.keyMilestones': 'ਮੁੱਖ ਮੀਲਪੱਥਰ',
-    'home.photographicArchives': 'ਫੋਟੋ ਆਰਕਾਈਵਜ਼',
     'home.theFounders': 'ਜੀਵਨੀ',
     'home.livingLegacy': 'ਜੀਵੰਤ ਵਿਰਾਸਤ',
-    'home.continueLegacy': 'ਵਿਰਾਸਤ ਜਾਰੀ ਰੱਖੋ',
     'home.exploreScholarships': 'ਵਜੀਫੇ ਦੀ ਪੜਚੋਲ ਕਰੋ',
 
     // Gallery Page
     'gallery.hero.title': 'ਯਾਦਾਂ',
-    'gallery.hero.subtitle': 'ਇਸ ਸਕਾਲਰਸ਼ਿਪ, ਇਸਦੇ ਸਥਾਪਕਾਂ ਅਤੇ ਇਸ ਦੇ ਰੂਪ ਵਿੱਚ ਆਏ ਜੀਵਨ ਦੀ ਦਿੱਖੀ ਰਿਕਾਰਡ।',
-    'gallery.photos.title': 'ਫੋਟੋ',
-    'gallery.videos.title': 'ਵਿਡੀਓ',
+    'gallery.hero.subtitle': 'ਇਸ ਵਜ਼ੀਫ਼ਾ ਪ੍ਰੋਗਰਾਮ, ਇਸ ਦੇ ਸੰਸਥਾਪਕਾਂ ਅਤੇ ਇਸ ਨਾਲ ਬਦਲੇ ਜੀਵਨਾਂ ਦਾ ਦ੍ਰਿਸ਼ਮਾਨ ਰਿਕਾਰਡ।',
+    'gallery.photos.title': 'ਫੋਟੋਆਂ',
+    'gallery.videos.title': 'ਵੀਡੀਓਜ਼',
     'gallery.videoUnavailable': 'ਵਿਡੀਓ ਉਪਲਬਧ ਨਹੀਂ',
-    'gallery.youtube': 'ਯੂਟੀਯੂਬ',
+    'gallery.youtube': 'ਯੂਟਿਊਬ',
 
     // About Page
     'about.title': 'ਸਾਡੇ ਬਾਰੇ',

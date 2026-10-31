@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FileText, CheckCircle2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 interface FormData {
   rollNumber: string;
@@ -32,10 +33,19 @@ interface FormData {
   deserveScholarship: string;
   canInterview: string;
   dataAuthorization: string;
+  website_url?: string;
 }
 
 export function ApplicationPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<React.ElementRef<typeof Turnstile>>(null);
+
+  const WORKER_URL = "https://scholarship-form-api.natashagulati29.workers.dev";
+  // Public site key only. Never paste the Turnstile secret key here.
+  const TURNSTILE_SITE_KEY = "0x4AAAAAAFq8QoMC2xAAfbyWpcMjvYCUbe0";
 
   const {
     register,
@@ -43,12 +53,47 @@ export function ApplicationPage() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = () => {
-    setSubmitted(true);
+  const onSubmit = async (data: FormData) => {
+    setSubmitError("");
+
+    if (data.dataAuthorization !== "Agree") {
+      setSubmitError("You must agree to the data authorization to apply.");
+      return;
+    }
+    if (!turnstileToken) {
+      setSubmitError("Please complete the security verification.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          turnstileToken,
+          application: { ...data, website_url: data.website_url || "" },
+        }),
+      });
+      const result: { success?: boolean; message?: string } = await response.json();
+      if (!response.ok || result.success !== true) {
+        throw new Error(result.message || "Unable to save your application.");
+      }
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message :
+        "Submission could not be confirmed. Please contact the scholarship administrator before retrying.");
+      setTurnstileToken("");
+      turnstileRef.current?.reset();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
-    return (
+
+return (
+
       <div className="min-h-screen flex items-center justify-center bg-white px-6">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -88,7 +133,8 @@ export function ApplicationPage() {
     );
   }
 
-  return (
+return (
+
     <div className="bg-white">
       {/* Hero Section */}
       <motion.section
@@ -146,6 +192,11 @@ export function ApplicationPage() {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-8"
           >
+          {/* Honeypot: leave empty; hidden from real applicants */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+            <input type="text" tabIndex={-1} autoComplete="off" {...register("website_url")} />
+          </div>
+
             {/* Q1: Roll Number */}
             <div>
               <label
@@ -178,7 +229,9 @@ export function ApplicationPage() {
                 <label
                   className="block mb-2 uppercase tracking-wide text-sm"
                   style={{
-                    fontFamily: "'Work Sans', sans-serif",
+
+                    fontFamily: "'Work Sans', sans-serif"
+
                   }}
                 >
                   First Name *
@@ -257,7 +310,9 @@ export function ApplicationPage() {
                   <input
                     type="radio"
                     value="Male"
-                    {...register("gender")}
+                    {...register("gender", {
+                      required: "Gender is required",
+                    })}
                     className="w-4 h-4"
                   />
                   <span
@@ -272,7 +327,9 @@ export function ApplicationPage() {
                   <input
                     type="radio"
                     value="Prefer not to say"
-                    {...register("gender")}
+                    {...register("gender", {
+                      required: "Gender is required",
+                    })}
                     className="w-4 h-4"
                   />
                   <span
@@ -308,799 +365,1567 @@ export function ApplicationPage() {
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
                 style={{
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               />
+
               {errors.branch && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.branch.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q6: Teacher Reference */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Reference: Name of current college teacher *
+
               </label>
+
               <input
+
                 {...register("teacherReference", {
+
                   required: "Teacher reference is required",
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               />
+
               {errors.teacherReference && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.teacherReference.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q7-Q8: Address */}
+
             <div className="grid md:grid-cols-2 gap-6">
+
               <div>
+
                 <label
+
                   className="block mb-2 uppercase tracking-wide text-sm"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 >
+
                   Permanent address - house number *
+
                 </label>
+
                 <input
+
                   {...register("houseNumber", {
+
                     required: "House number is required",
+
                   })}
+
                   placeholder="If no house number, please enter 0"
+
                   className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 />
+
                 {errors.houseNumber && (
+
                   <p className="text-red-600 text-sm mt-1">
+
                     {errors.houseNumber.message}
+
                   </p>
+
                 )}
+
               </div>
 
               <div>
+
                 <label
+
                   className="block mb-2 uppercase tracking-wide text-sm"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 >
+
                   Street address *
+
                 </label>
+
                 <input
+
                   {...register("streetAddress", {
+
                     required: "Street address is required",
+
                   })}
+
                   placeholder="if no street, please N/A"
+
                   className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 />
+
                 {errors.streetAddress && (
+
                   <p className="text-red-600 text-sm mt-1">
+
                     {errors.streetAddress.message}
+
                   </p>
+
                 )}
+
               </div>
+
             </div>
 
             {/* Q9-Q11: District, State, PIN */}
+
             <div className="grid md:grid-cols-3 gap-6">
+
               <div>
+
                 <label
+
                   className="block mb-2 uppercase tracking-wide text-sm"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 >
+
                   District Address *
+
                 </label>
+
                 <input
+
                   {...register("district", {
+
                     required: "District is required",
+
                   })}
+
                   className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 />
+
                 {errors.district && (
+
                   <p className="text-red-600 text-sm mt-1">
+
                     {errors.district.message}
+
                   </p>
+
                 )}
+
               </div>
 
               <div>
+
                 <label
+
                   className="block mb-2 uppercase tracking-wide text-sm"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 >
+
                   State or Union Territory *
+
                 </label>
+
                 <input
+
                   {...register("stateOrUT", {
+
                     required: "State/UT is required",
+
                   })}
+
                   className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 />
+
                 {errors.stateOrUT && (
+
                   <p className="text-red-600 text-sm mt-1">
+
                     {errors.stateOrUT.message}
+
                   </p>
+
                 )}
+
               </div>
 
               <div>
+
                 <label
+
                   className="block mb-2 uppercase tracking-wide text-sm"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 >
+
                   PIN Code *
+
                 </label>
+
                 <input
+
                   {...register("pinCode", {
+
                     required: "PIN code is required",
+
                   })}
+
                   className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                   style={{
+
                     fontFamily: "'Work Sans', sans-serif",
+
                   }}
+
                 />
+
                 {errors.pinCode && (
+
                   <p className="text-red-600 text-sm mt-1">
+
                     {errors.pinCode.message}
+
                   </p>
+
                 )}
+
               </div>
+
             </div>
 
             {/* Q12: Family Status */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Family Status *
+
               </label>
+
               <select
+
                 {...register("familyStatus", {
+
                   required: "Family status is required",
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 <option value="">Select...</option>
+
                 <option value="Both parents alive">
+
                   Both parents alive
+
                 </option>
+
                 <option value="Only mother alive">
+
                   Only mother alive
+
                 </option>
+
                 <option value="Only Father alive">
+
                   Only Father alive
+
                 </option>
+
                 <option value="Both parents are no more">
+
                   Both parents are no more
+
                 </option>
+
               </select>
+
               {errors.familyStatus && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.familyStatus.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q13: Guardian */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 If both your parents are no more, who is looking
+
                 after you?
+
               </label>
+
               <input
+
                 {...register("guardian")}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               />
+
             </div>
 
             {/* Q14: Siblings */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 How many siblings do you have? *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("siblings", {
+
                   required: "Number of siblings is required",
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
               />
+
               {errors.siblings && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.siblings.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q15: Income Providers */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Which members of the family provide income? *
+
               </label>
+
               <select
+
                 {...register("incomeProviders", {
+
                   required: "Income providers is required",
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 <option value="">Select...</option>
+
                 <option value="Both parents">
+
                   Both parents
+
                 </option>
+
                 <option value="1 parent">1 parent</option>
+
                 <option value="All members excluding you">
+
                   All members excluding you
+
                 </option>
+
                 <option value="All members including you">
+
                   All members including you
+
                 </option>
+
                 <option value="None">None</option>
+
                 <option value="Others">Others</option>
+
               </select>
+
               {errors.incomeProviders && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.incomeProviders.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q16: Income Providers Other */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 If others, please specify
+
               </label>
+
               <input
+
                 {...register("incomeProvidersOther")}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               />
+
             </div>
 
             {/* Q17: Annual Income */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Total annual family income (in rupees) *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("totalAnnualIncome", {
+
                   required: "Annual income is required",
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
               />
+
               {errors.totalAnnualIncome && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.totalAnnualIncome.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q18: Matrix Marks */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Matrix Marks % *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("matrixMarks", {
+
                   required: "Matrix marks is required",
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                   max: {
+
                     value: 100,
+
                     message: "Cannot exceed 100",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
                 max="100"
+
                 step="0.01"
+
               />
+
               {errors.matrixMarks && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.matrixMarks.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q19: 10+2 or Diploma */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 10+2 or Diploma? *
+
               </label>
+
               <select
+
                 {...register("diplomaOrTenPlusTwo", {
+
                   required: "This field is required",
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 <option value="">Select...</option>
+
                 <option value="10+2">10+2</option>
+
                 <option value="Diploma">Diploma</option>
+
               </select>
+
               {errors.diplomaOrTenPlusTwo && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.diplomaOrTenPlusTwo.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q20: Score */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 10+2 or Diploma Score (%) *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("diplomaOrTenPlusTwoScore", {
+
                   required: "Score is required",
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                   max: {
+
                     value: 100,
+
                     message: "Cannot exceed 100",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
                 max="100"
+
                 step="0.01"
+
               />
+
               {errors.diplomaOrTenPlusTwoScore && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.diplomaOrTenPlusTwoScore.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q21: Current Semester */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Which semester are you in now? *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("currentSemester", {
+
                   required: "Current semester is required",
+
                   min: {
+
                     value: 1,
+
                     message: "Must be at least 1",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="1"
+
               />
+
               {errors.currentSemester && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.currentSemester.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q22: Total Semester Marks */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Total marks in all semester % *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("totalSemesterMarks", {
+
                   required: "Total semester marks is required",
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                   max: {
+
                     value: 100,
+
                     message: "Cannot exceed 100",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
                 max="100"
+
                 step="0.01"
+
               />
+
               {errors.totalSemesterMarks && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.totalSemesterMarks.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q23: Reappears */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 How many reappears do you have? *
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("reappears", {
+
                   required: "Number of reappears is required",
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
               />
+
               {errors.reappears && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.reappears.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q24: Other Scholarship */}
+
             <div>
+
               <label
+
                 className="block mb-3 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Did you receive or are you now receiving any
+
                 other scholarship during your graduation course
+
                 in GNDEC? *
+
               </label>
+
               <div className="space-y-2">
+
                 <label className="flex items-center gap-3 cursor-pointer">
+
                   <input
+
                     type="radio"
+
                     value="Yes"
+
                     {...register("receivingOtherScholarship", {
+
                       required: "This field is required",
+
                     })}
+
                     className="w-4 h-4"
+
                   />
+
                   <span
+
                     style={{
+
                       fontFamily: "'Work Sans', sans-serif",
+
                     }}
+
                   >
+
                     Yes
+
                   </span>
+
                 </label>
+
                 <label className="flex items-center gap-3 cursor-pointer">
+
                   <input
+
                     type="radio"
+
                     value="No"
+
                     {...register("receivingOtherScholarship")}
+
                     className="w-4 h-4"
+
                   />
+
                   <span
+
                     style={{
+
                       fontFamily: "'Work Sans', sans-serif",
+
                     }}
+
                   >
+
                     No
+
                   </span>
+
                 </label>
+
               </div>
+
               {errors.receivingOtherScholarship && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.receivingOtherScholarship.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q25: Other Scholarship Amount */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 If yes, how much total did you receive in rupees
+
                 throughout your graduation course in GNDEC?
+
               </label>
+
               <input
+
                 type="number"
+
                 {...register("otherScholarshipAmount", {
+
                   min: {
+
                     value: 0,
+
                     message: "Cannot be negative",
+
                   },
+
                 })}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
                 min="0"
+
               />
+
               {errors.otherScholarshipAmount && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.otherScholarshipAmount.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q26: Why deserve scholarship */}
+
             <div>
+
               <label
+
                 className="block mb-2 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Why do you think you deserve this scholarship or
+
                 need financial help? Please provide long answer.
+
                 *
+
               </label>
+
               <textarea
+
                 {...register("deserveScholarship", {
+
                   required: "This field is required",
+
                   minLength: {
+
                     value: 50,
+
                     message:
+
                       "Please provide a detailed answer (at least 50 characters)",
+
                   },
+
                 })}
+
                 rows={8}
+
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               />
+
               {errors.deserveScholarship && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.deserveScholarship.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q27: Can Interview */}
+
             <div>
+
               <label
+
                 className="block mb-3 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 Can we interview you? *
+
               </label>
+
               <div className="space-y-2">
+
                 <label className="flex items-center gap-3 cursor-pointer">
+
                   <input
+
                     type="radio"
+
                     value="Yes"
+
                     {...register("canInterview", {
+
                       required: "This field is required",
+
                     })}
+
                     className="w-4 h-4"
+
                   />
+
                   <span
+
                     style={{
+
                       fontFamily: "'Work Sans', sans-serif",
+
                     }}
+
                   >
+
                     Yes
+
                   </span>
+
                 </label>
+
                 <label className="flex items-center gap-3 cursor-pointer">
+
                   <input
+
                     type="radio"
+
                     value="No"
+
                     {...register("canInterview")}
+
                     className="w-4 h-4"
+
                   />
+
                   <span
+
                     style={{
+
                       fontFamily: "'Work Sans', sans-serif",
+
                     }}
+
                   >
+
                     No
+
                   </span>
+
                 </label>
+
               </div>
+
               {errors.canInterview && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.canInterview.message}
+
                 </p>
+
               )}
+
             </div>
 
             {/* Q28: Authorization */}
+
             <div>
+
               <label
+
                 className="block mb-3 uppercase tracking-wide text-sm"
+
                 style={{
+
                   fontFamily: "'Work Sans', sans-serif",
+
                 }}
+
               >
+
                 You authorise us to collect, use, store and
+
                 verify your personal information and data
+
                 provided by you in the application form. *
+
               </label>
+
               <div className="space-y-2">
+
                 <label className="flex items-center gap-3 cursor-pointer">
+
                   <input
+
                     type="radio"
+
                     value="Agree"
+
+                    {...register("dataAuthorization", {
+
+                      required: "You must agree to proceed",
+
+                    })}
+
+                    className="w-4 h-4"
+
+                  />
+
+                  <span
+
+                    style={{
+
+                      fontFamily: "'Work Sans', sans-serif",
+
+                    }}
+
+                  >
+
+                    Agree
+
+                  </span>
+
+                </label>
+
+                <label className="flex items-center gap-3 cursor-pointer">
+
+                  <input
+
+                    type="radio"
+
+                    value="Disagree"
+
                     {...register("dataAuthorization", {
                       required: "You must agree to proceed",
+                      validate: (value) => value === "Agree" || "You must agree to proceed",
                     })}
+
                     className="w-4 h-4"
+
                   />
+
                   <span
+
                     style={{
+
                       fontFamily: "'Work Sans', sans-serif",
+
                     }}
+
                   >
-                    Agree
-                  </span>
-                </label>
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="radio"
-                    value="Disagree"
-                    {...register("dataAuthorization")}
-                    className="w-4 h-4"
-                  />
-                  <span
-                    style={{
-                      fontFamily: "'Work Sans', sans-serif",
-                    }}
-                  >
+
                     Disagree
+
                   </span>
+
                 </label>
+
               </div>
+
               {errors.dataAuthorization && (
+
                 <p className="text-red-600 text-sm mt-1">
+
                   {errors.dataAuthorization.message}
+
                 </p>
+
               )}
+
             </div>
-            <div className="flex justify-end pt-4">
+
+            <div className="space-y-3">
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={(token) => setTurnstileToken(token)}
+              onExpire={() => setTurnstileToken("")}
+              onError={() => setTurnstileToken("")}
+            />
+            {submitError && (
+              <p role="alert" className="text-red-600 text-sm" aria-live="polite">
+                {submitError}
+              </p>
+            )}
+          </div>
+
+          <div className="flex justify-end pt-4">
+
               <button
+
                 type="submit"
+
                 className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-colors uppercase tracking-wider"
+
                 style={{ fontFamily: "'Work Sans', sans-serif" }}
+
               >
-                Submit Application
+
+                {isSubmitting ? "Submitting..." : "Submit Application"}
+
               </button>
+
             </div>
+
           </motion.form>
+
         </div>
+
       </section>
+
     </div>
+
   );
+
 }

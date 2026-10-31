@@ -45,7 +45,7 @@ export function ApplicationPage() {
 
   const WORKER_URL = "https://scholarship-form-api.natashagulati29.workers.dev";
   // Public site key only. Never paste the Turnstile secret key here.
-  const TURNSTILE_SITE_KEY = "0x4AAAAAAFq8QoMC2xAAfbyWpcMjvYCUbe0";
+  const TURNSTILE_SITE_KEY = "0x4AAAAAAFq8QpFmUgmZDLWL";
 
   const {
     register,

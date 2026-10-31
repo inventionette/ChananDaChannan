@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useForm } from "react-hook-form";
 import { Mail, CheckCircle2 } from "lucide-react";
+import { useForm as useFormspree, ValidationError } from "@formspree/react";
 
-interface ContactFormData {
+interface ContactFormData extends Record<string, string> {
   fullName: string;
   phone: string;
   email: string;
@@ -18,23 +18,21 @@ const labelClass =
   "block mb-1 text-xs uppercase tracking-widest text-gray-500 font-medium";
 
 export function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [formspreeState, submitToFormspree, resetFormspree] =
+    useFormspree<ContactFormData>("mkjnejqb");
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm<ContactFormData>();
 
-  const onSubmit = (_data: ContactFormData) => {
-    setTimeout(() => {
-      setSubmitted(true);
-      reset();
-    }, 600);
+  const onSubmit = async (data: ContactFormData) => {
+    await submitToFormspree(data);
   };
 
-  if (submitted) {
+  if (formspreeState.succeeded) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center bg-white px-6">
         <motion.div
@@ -64,7 +62,10 @@ export function ContactPage() {
             Thank you for reaching out. We will review your message and respond as soon as possible.
           </p>
           <button
-            onClick={() => setSubmitted(false)}
+            onClick={() => {
+              reset();
+              resetFormspree();
+            }}
             className="text-xs uppercase tracking-widest underline underline-offset-4 text-gray-500 hover:text-black transition-colors"
             style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
@@ -181,8 +182,6 @@ export function ContactPage() {
               </div>
 
               <form
-                action="https://formspree.io/f/mkjnejqb"
-                method="POST"
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
                 className="space-y-10"
@@ -214,6 +213,11 @@ export function ContactPage() {
                       </motion.p>
                     )}
                   </AnimatePresence>
+                  <ValidationError
+                    field="fullName"
+                    errors={formspreeState.errors}
+                    className="mt-1.5 text-xs text-red-600"
+                  />
                 </div>
 
                 {/* Phone + Email */}
@@ -249,6 +253,11 @@ export function ContactPage() {
                         </motion.p>
                       )}
                     </AnimatePresence>
+                    <ValidationError
+                      field="phone"
+                      errors={formspreeState.errors}
+                      className="mt-1.5 text-xs text-red-600"
+                    />
                   </div>
 
                   <div>
@@ -281,6 +290,11 @@ export function ContactPage() {
                         </motion.p>
                       )}
                     </AnimatePresence>
+                    <ValidationError
+                      field="email"
+                      errors={formspreeState.errors}
+                      className="mt-1.5 text-xs text-red-600"
+                    />
                   </div>
                 </div>
 
@@ -310,6 +324,11 @@ export function ContactPage() {
                       </motion.p>
                     )}
                   </AnimatePresence>
+                  <ValidationError
+                    field="subject"
+                    errors={formspreeState.errors}
+                    className="mt-1.5 text-xs text-red-600"
+                  />
                 </div>
 
                 {/* Message */}
@@ -344,19 +363,30 @@ export function ContactPage() {
                       </motion.p>
                     )}
                   </AnimatePresence>
+                  <ValidationError
+                    field="message"
+                    errors={formspreeState.errors}
+                    className="mt-1.5 text-xs text-red-600"
+                  />
                 </div>
 
                 {/* Submit */}
+                <ValidationError
+                  errors={formspreeState.errors}
+                  className="mb-4 text-xs text-red-600"
+                  role="alert"
+                  aria-live="polite"
+                />
                 <div className="pt-2 flex items-center gap-6">
                   <motion.button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={formspreeState.submitting}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     className="px-10 py-4 bg-black text-white text-xs uppercase tracking-widest hover:bg-gray-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: "'Work Sans', sans-serif" }}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {formspreeState.submitting ? "Sending..." : "Send Message"}
                   </motion.button>
                   <p
                     className="text-xs text-gray-400"

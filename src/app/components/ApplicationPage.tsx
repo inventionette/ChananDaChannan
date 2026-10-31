@@ -6,6 +6,7 @@ import { Turnstile } from "@marsidev/react-turnstile";
 
 interface FormData {
   rollNumber: string;
+  class: string;
   firstName: string;
   lastName: string;
   gender: string;
@@ -175,7 +176,7 @@ return (
       <section className="py-20 px-6 lg:px-12">
         <div className="container mx-auto max-w-4xl">
           {/* Image container */}
-          <div className="mb-12 flex justify-center">
+          <figure className="mb-12 flex flex-col items-center">
             <div className="w-full max-w-2xl h-80 sm:h-[32rem] overflow-hidden">
               <img
                 src={`${import.meta.env.BASE_URL}image/biography1/retry.JPG?v=grayscale`}
@@ -183,7 +184,10 @@ return (
                 className="w-full h-full object-contain"
               />
             </div>
-          </div>
+            <figcaption className="mt-3 text-center text-sm text-gray-700">
+              Saheed-s-Azam Bhagat Singh
+            </figcaption>
+          </figure>
 
           <motion.form
             initial={{ opacity: 0 }}
@@ -223,7 +227,29 @@ return (
               )}
             </div>
 
-            {/* Q2-Q3: First and Last Name */}
+            {/* Q2: Class */}
+            <div>
+              <label
+                className="block mb-2 uppercase tracking-wide text-sm"
+                style={{ fontFamily: "'Work Sans', sans-serif" }}
+              >
+                Class *
+              </label>
+              <input
+                {...register("class", {
+                  required: "Class is required",
+                })}
+                className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                style={{ fontFamily: "'Work Sans', sans-serif" }}
+              />
+              {errors.class && (
+                <p className="text-red-600 text-sm mt-1">
+                  {errors.class.message}
+                </p>
+              )}
+            </div>
+
+            {/* Q3-Q4: First and Last Name */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -1042,7 +1068,7 @@ return (
 
             </div>
 
-            {/* Q18: Matrix Marks */}
+            {/* Q18: Matric Marks */}
 
             <div>
 
@@ -1058,7 +1084,7 @@ return (
 
               >
 
-                Matrix Marks % *
+                Matric Marks % *
 
               </label>
 
@@ -1068,7 +1094,7 @@ return (
 
                 {...register("matrixMarks", {
 
-                  required: "Matrix marks is required",
+                  required: "Matric marks is required",
 
                   min: {
 
@@ -1326,7 +1352,7 @@ return (
 
               >
 
-                Total marks in all semester % *
+                Total marks in all semester % or CPGA till date *
 
               </label>
 

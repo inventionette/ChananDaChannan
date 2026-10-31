@@ -31,7 +31,7 @@ const lorem1980sPunjab2 = "Despite the dangers faced by political activists at t
 
 const loremClosewhat = "";
 
-const loremMed4 = "Tragically, his courage came at a high price. On the morning of 14 May 1989, Comrade Gurmail Singh Hunjan was killed in his village, Pandher Kheri, by Khalistani terrorists. His gunman, Comrade Joginder Singh, also fought bravely and lost his life. Just a few months earlier, after many death threats, he was given security protection. Friends and comrades had even started raising money to buy him a vehicle for his safety. Despite the risks and advice to move to a safer location, he never stepped away from public life or gave up his principles.";
+const loremMed4 = "Tragically, his courage came at a high price. On the morning of 14 May 1989, Comrade Gurmail Singh Hunjan was killed in his village, Pandher Kheri, by terrorists. His gunman, Comrade Joginder Singh, also fought bravely and lost his life. Just a few months earlier, after many death threats, he was given security protection. Friends and comrades had even started raising money to buy him a vehicle for his safety. Despite the risks and advice to move to a safer location, he never stepped away from public life or gave up his principles.";
 
 // NEW: Legacy subsection paragraphs (6 paragraphs)
 const loremLegacy1 = "To honour his legacy, every year on 14 May, people gather in Pandher Kheri to remember Comrades Gurmail Singh Hunjan and Joginder Singh. These events unite comrades, family, and younger generations for speeches, cultural performances, and discussions on current issues, keeping alive the push for justice and unity.";
@@ -440,7 +440,7 @@ export function BiographyPage() {
             className="mb-4"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
             }}
           >
             {displayBiography.name}
@@ -493,7 +493,7 @@ export function BiographyPage() {
                     className="leading-none"
                     style={{
                       fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: "clamp(3rem, 9vw, 6.5rem)",
+                      fontSize: "clamp(2rem, 5vw, 3.5rem)",
                       letterSpacing: "-0.01em",
                     }}
                   >
@@ -591,7 +591,7 @@ export function BiographyPage() {
                           className="leading-none mb-6"
                           style={{
                             fontFamily: "'Cormorant Garamond', serif",
-                            fontSize: "clamp(3rem, 9vw, 6.5rem)",
+                            fontSize: "clamp(2rem, 5vw, 3.5rem)",
                             letterSpacing: "-0.01em",
                           }}
                         >

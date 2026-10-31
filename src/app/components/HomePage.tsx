@@ -8,8 +8,20 @@ export function HomePage() {
   const { language, t } = useTranslation();
   const story =
     language === "en"
-      ? "Chanan Da Channan is a tribute to the life, ideals, and legacy of Comrade Chanan Singh Barola and Comrade Gurmail Singh Hunjan. It seeks to preserve their memories, celebrate their contributions, and share the values that inspired their life's journeys. We believe the true value of a life lies in its contribution to society. Inspired by equality, compassion, honesty, and selfless service, we aim to keep alive a legacy that encourages future generations to work toward a fair and equal society. Through photographs, personal memories, and stories, we document important moments from Comrade Gurmail Singh Hunjan's life. We also highlight the importance of education and scholarship opportunities in helping deserving students overcome financial barriers and achieve their aspirations. By preserving history, sharing experiences, and supporting educational opportunities, we seek to inspire people to carry forward the values of humanity, social responsibility, equity, and equality. Our aim is to turn remembrance into inspiration and ideals into meaningful action. A legacy lives on not only through the memories we preserve, but also through the positive difference we make in the lives of others."
-      : "ਚੰਨਣ ਦਾ ਚਾਨਣ ਕਾਮਰੇਡ ਚੰਨਣ ਸਿੰਘ ਬਰੋਲਾ ਅਤੇ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੇ ਜੀਵਨ, ਆਦਰਸ਼ਾਂ ਅਤੇ ਵਿਰਾਸਤ ਨੂੰ ਸਮਰਪਿਤ ਹੈ। ਇਹ ਉਨ੍ਹਾਂ ਦੀਆਂ ਯਾਦਾਂ ਨੂੰ ਸੰਭਾਲਣ, ਉਨ੍ਹਾਂ ਦੇ ਯੋਗਦਾਨਾਂ ਦਾ ਸਨਮਾਨ ਕਰਨ ਅਤੇ ਉਨ੍ਹਾਂ ਦੇ ਜੀਵਨ-ਸਫ਼ਰ ਤੋਂ ਪ੍ਰੇਰਿਤ ਕਦਰਾਂ-ਕੀਮਤਾਂ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਦਾ ਯਤਨ ਕਰਦਾ ਹੈ। ਸਾਡਾ ਵਿਸ਼ਵਾਸ ਹੈ ਕਿ ਜੀਵਨ ਦਾ ਅਸਲ ਮੁੱਲ ਸਮਾਜ ਲਈ ਉਸਦੇ ਯੋਗਦਾਨ ਵਿੱਚ ਹੈ। ਬਰਾਬਰੀ, ਹਮਦਰਦੀ, ਇਮਾਨਦਾਰੀ ਅਤੇ ਨਿਸ਼ਕਾਮ ਸੇਵਾ ਦੇ ਸਿਧਾਂਤਾਂ ਤੋਂ ਪ੍ਰੇਰਿਤ ਹੋ ਕੇ, ਅਸੀਂ ਅਜਿਹੀ ਵਿਰਾਸਤ ਨੂੰ ਜਿਉਂਦਾ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹਾਂ ਜੋ ਆਉਣ ਵਾਲੀਆਂ ਪੀੜ੍ਹੀਆਂ ਨੂੰ ਨਿਆਂਪੂਰਨ ਅਤੇ ਬਰਾਬਰੀ ਵਾਲਾ ਸਮਾਜ ਬਣਾਉਣ ਲਈ ਉਤਸ਼ਾਹਿਤ ਕਰੇ। ਤਸਵੀਰਾਂ, ਨਿੱਜੀ ਯਾਦਾਂ ਅਤੇ ਕਹਾਣੀਆਂ ਰਾਹੀਂ ਅਸੀਂ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੇ ਜੀਵਨ ਦੇ ਮਹੱਤਵਪੂਰਨ ਪਲ ਦਰਜ ਕਰਦੇ ਹਾਂ। ਅਸੀਂ ਯੋਗ ਵਿਦਿਆਰਥੀਆਂ ਨੂੰ ਆਰਥਿਕ ਰੁਕਾਵਟਾਂ ਪਾਰ ਕਰਕੇ ਆਪਣੇ ਸੁਪਨੇ ਪੂਰੇ ਕਰਨ ਵਿੱਚ ਮਦਦ ਲਈ ਸਿੱਖਿਆ ਅਤੇ ਵਜ਼ੀਫ਼ਿਆਂ ਦੇ ਮੌਕਿਆਂ ਦੀ ਮਹੱਤਤਾ ਵੀ ਉਜਾਗਰ ਕਰਦੇ ਹਾਂ। ਇਤਿਹਾਸ ਸੰਭਾਲ ਕੇ, ਤਜਰਬੇ ਸਾਂਝੇ ਕਰਕੇ ਅਤੇ ਸਿੱਖਿਆ ਦੇ ਮੌਕਿਆਂ ਨੂੰ ਸਹਾਰਾ ਦੇ ਕੇ, ਅਸੀਂ ਲੋਕਾਂ ਨੂੰ ਮਨੁੱਖਤਾ, ਸਮਾਜਿਕ ਜ਼ਿੰਮੇਵਾਰੀ ਅਤੇ ਬਰਾਬਰੀ ਦੀਆਂ ਕਦਰਾਂ ਨੂੰ ਅੱਗੇ ਲਿਜਾਣ ਲਈ ਪ੍ਰੇਰਿਤ ਕਰਦੇ ਹਾਂ। ਸਾਡਾ ਉਦੇਸ਼ ਯਾਦਾਂ ਨੂੰ ਪ੍ਰੇਰਣਾ ਅਤੇ ਆਦਰਸ਼ਾਂ ਨੂੰ ਅਰਥਪੂਰਨ ਕਾਰਜ ਵਿੱਚ ਬਦਲਣਾ ਹੈ। ਵਿਰਾਸਤ ਸਿਰਫ਼ ਸੰਭਾਲੀਆਂ ਯਾਦਾਂ ਰਾਹੀਂ ਹੀ ਨਹੀਂ, ਸਗੋਂ ਹੋਰਨਾਂ ਦੇ ਜੀਵਨ ਵਿੱਚ ਲਿਆਂਦੇ ਸਕਾਰਾਤਮਕ ਬਦਲਾਅ ਰਾਹੀਂ ਵੀ ਜਿਉਂਦੀ ਰਹਿੰਦੀ ਹੈ।";
+      ? [
+          "Chanan Da Channan is a tribute to the life, ideals and legacy of Comrade Chanan Singh Barola and Comrade Gurmail Singh Hunjan. It seeks to preserve his memories, celebrate their contributions and share the values that inspired their life's journey.",
+          "We believe that the true value of a life lies in its contribution to society. Inspired by the principles of equality, compassion, honesty and selfless service, we aim to keep alive a legacy that encourages future generations to work towards a fair and equal society.",
+          "Through photographs, personal memories and stories, we document and share important moments from Comrade Gurmail Singh Hunjan's life. We also highlight the importance of education and scholarship opportunities in helping deserving students overcome financial barriers and achieve their aspirations.",
+          "By preserving history, sharing experiences and supporting educational opportunities, we seek to inspire people to carry forward the values of humanity, social responsibility, equity and equality. Our aim is to turn remembrance into inspiration and ideals into meaningful action.",
+          "A legacy lives on not only through the memories we preserve, but also through the positive difference we make in the lives of others.",
+        ]
+      : [
+          "ਚੰਨਣ ਦਾ ਚਾਨਣ, ਕਾਮਰੇਡ ਚੰਨਣ ਸਿੰਘ ਬਰੋਲਾ ਅਤੇ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੇ ਜੀਵਨ, ਵਿਚਾਰਾਂ ਅਤੇ ਵਿਰਾਸਤ ਨੂੰ ਸਮਰਪਿਤ ਹੈ । ਇਸ ਦਾ ਉਦੇਸ਼ ਉਨ੍ਹਾਂ ਦੀਆਂ ਯਾਦਾਂ ਨੂੰ ਸਾਂਭਣਾ, ਸਮਾਜ ਪ੍ਰਤੀ ਉਨ੍ਹਾਂ ਦੇ ਯੋਗਦਾਨ ਨੂੰ ਯਾਦ ਕਰਨਾ ਅਤੇ ਉਨ੍ਹਾਂ ਦੇ ਜੀਵਨ ਤੋਂ ਪ੍ਰੇਰਿਤ ਕਦਰਾਂ-ਕੀਮਤਾਂ ਨੂੰ ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚਾਉਣਾ ਹੈ।",
+          "ਸਾਡਾ ਵਿਸ਼ਵਾਸ ਹੈ ਕਿ ਮਨੁੱਖੀ ਜੀਵਨ ਦੀ ਅਸਲ ਮਹੱਤਤਾ ਸਮਾਜ ਪ੍ਰਤੀ ਉਸ ਦੇ ਯੋਗਦਾਨ ਵਿੱਚ ਹੈ। ਬਰਾਬਰੀ, ਹਮਦਰਦੀ, ਇਮਾਨਦਾਰੀ ਅਤੇ ਨਿਸ਼ਕਾਮ ਸੇਵਾ ਦੇ ਸਿਧਾਂਤਾਂ ਤੋਂ ਪ੍ਰੇਰਨਾ ਲੈਂਦਿਆਂ, ਸਾਡਾ ਉਦੇਸ਼ ਉਨ੍ਹਾਂ ਦੀ ਵਿਰਾਸਤ ਨੂੰ ਜਿਉਂਦਾ ਰੱਖਣਾ ਅਤੇ ਆਉਣ ਵਾਲੀਆਂ ਪੀੜ੍ਹੀਆਂ ਨੂੰ ਇੱਕ ਨਿਰਪੱਖ ਅਤੇ ਬਰਾਬਰੀ ਵਾਲੇ ਸਮਾਜ ਦੀ ਸਿਰਜਣਾ ਲਈ ਪ੍ਰੇਰਿਤ ਕਰਨਾ ਹੈ ।",
+          "ਤਸਵੀਰਾਂ, ਨਿੱਜੀ ਯਾਦਾਂ ਅਤੇ ਕਹਾਣੀਆਂ ਰਾਹੀਂ ਅਸੀਂ ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਸਿੰਘ ਹੂੰਝਣ ਦੇ ਜੀਵਨ ਦੇ ਮਹੱਤਵਪੂਰਨ ਪਲਾਂ ਨੂੰ ਸਾਂਭਦੇ ਅਤੇ ਸਾਂਝਾ ਕਰਦੇ ਹਾਂ । ਇਸ ਦੇ ਨਾਲ ਹੀ, ਅਸੀਂ ਸਿੱਖਿਆ ਅਤੇ ਵਜ਼ੀਫ਼ਿਆਂ ਦੇ ਮਹੱਤਵ ਨੂੰ ਉਜਾਗਰ ਕਰਦੇ ਹਾਂ, ਤਾਂ ਜੋ ਯੋਗ ਵਿਦਿਆਰਥੀ ਆਰਥਿਕ ਮੁਸ਼ਕਲਾਂ ਨੂੰ ਪਾਰ ਕਰਕੇ ਆਪਣੇ ਸੁਪਨਿਆਂ ਅਤੇ ਟੀਚਿਆਂ ਨੂੰ ਪੂਰਾ ਕਰ ਸਕਣ ।",
+          "ਇਤਿਹਾਸ ਨੂੰ ਸਾਂਭ ਕੇ, ਤਜਰਬਿਆਂ ਨੂੰ ਸਾਂਝਾ ਕਰਕੇ ਅਤੇ ਸਿੱਖਿਆ ਦੇ ਮੌਕਿਆਂ ਨੂੰ ਉਤਸ਼ਾਹਿਤ ਕਰਕੇ, ਅਸੀਂ ਲੋਕਾਂ ਨੂੰ ਮਨੁੱਖਤਾ, ਸਮਾਜਿਕ ਜ਼ਿੰਮੇਵਾਰੀ, ਨਿਆਂ ਅਤੇ ਬਰਾਬਰੀ ਦੇ ਮੁੱਲਾਂ ਨੂੰ ਅੱਗੇ ਵਧਾਉਣ ਲਈ ਪ੍ਰੇਰਿਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਾਂ। ਸਾਡਾ ਮਕਸਦ ਯਾਦਾਂ ਨੂੰ ਪ੍ਰੇਰਨਾ ਵਿੱਚ ਅਤੇ ਵਿਚਾਰਾਂ ਨੂੰ ਅਮਲੀ ਰੂਪ ਦੇ ਕੇ ਸਮਾਜ ਦੀ ਭਲਾਈ ਵਿੱਚ ਬਦਲਣਾ ਹੈ ।",
+          "ਵਿਰਾਸਤ ਸਿਰਫ਼ ਉਨ੍ਹਾਂ ਯਾਦਾਂ ਵਿੱਚ ਹੀ ਜਿਉਂਦੀ ਨਹੀਂ ਰਹਿੰਦੀ ਜਿਨ੍ਹਾਂ ਨੂੰ ਅਸੀਂ ਸਾਂਭ ਕੇ ਰੱਖਦੇ ਹਾਂ, ਸਗੋਂ ਉਨ੍ਹਾਂ ਚੰਗੇ ਬਦਲਾਵਾਂ ਵਿੱਚ ਵੀ ਜਿਉਂਦੀ ਰਹਿੰਦੀ ਹੈ ਜੋ ਅਸੀਂ ਦੂਜਿਆਂ ਦੇ ਜੀਵਨ ਵਿੱਚ ਲਿਆਉਂਦੇ ਹਾਂ ।",
+        ];
   const milestones = [
     {
       year: "1918",
@@ -48,8 +60,8 @@ export function HomePage() {
     },
     {
       year: "1989",
-      event: "Comrade Hunjan was killed by Khalistani terrorists",
-      eventPa: "ਕਾਮਰੇਡ ਹੂੰਝਣ ਖਾਲਿਸਤਾਨੀ ਅੱਤਵਾਦੀਆਂ ਵੱਲੋਂ ਸ਼ਹੀਦ ਕੀਤੇ ਗਏ",
+      event: "Comrade Hunjan was killed by terrorists",
+      eventPa: "ਕਾਮਰੇਡ ਹੂੰਝਣ ਅੱਤਵਾਦੀਆਂ ਵੱਲੋਂ ਸ਼ਹੀਦ ਕੀਤੇ ਗਏ",
     },
     {
       year: "2000",
@@ -67,7 +79,7 @@ export function HomePage() {
     {
       name: "Comrade Gurmail Hunjan",
       years: "1951-1989",
-      role: "People's Leader",
+      role: "People's leader",
       biography: [
         "Comrade Gurmail Singh Hunjan was a people's leader. He lived, worked, and gave his life for the unity, integrity, and humanity of Punjab and India.",
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
@@ -141,9 +153,18 @@ export function HomePage() {
             </h2>
 
             <div className="prose prose-lg max-w-none" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed first-letter:text-4xl first-letter:font-serif first-letter:float-left first-letter:mr-2 first-letter:leading-none first-letter:mt-1">
-                {story}
-              </p>
+              {story.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className={`text-sm md:text-base text-gray-700 leading-relaxed mb-4 last:mb-0 ${
+                    index === 0
+                      ? "first-letter:text-4xl first-letter:font-serif first-letter:float-left first-letter:mr-2 first-letter:leading-none first-letter:mt-1"
+                      : ""
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
           </motion.div>
@@ -229,7 +250,7 @@ export function HomePage() {
                     {language === 'en' ? founder.name : 'ਕਾਮਰੇਡ ਗੁਰਮੇਲ ਹੂੰਝਣ'}
                   </h3>
                   <p className="text-xs uppercase tracking-widest text-gray-500 mb-1" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-                    {founder.role}
+                    {language === "en" ? founder.role : "ਲੋਕਾਂ ਦਾ ਨੇਤਾ"}
                   </p>
                   <p className="text-sm italic text-gray-600" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {founder.years}

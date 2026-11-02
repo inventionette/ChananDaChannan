@@ -1,10 +1,11 @@
+
 import { defineConfig } from 'vite'
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/ChananDaChannan/' : '/',
+export default defineConfig({
+  base: '/',
 
   plugins: [
     react(),
@@ -18,4 +19,4 @@ export default defineConfig(({ mode }) => ({
   },
 
   assetsInclude: ['**/*.svg', '**/*.csv'],
-}))
+})

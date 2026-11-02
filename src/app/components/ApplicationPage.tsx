@@ -6,7 +6,6 @@ import { Turnstile } from "@marsidev/react-turnstile";
 
 interface FormData {
   rollNumber: string;
-  class: string;
   firstName: string;
   lastName: string;
   gender: string;
@@ -165,8 +164,8 @@ return (
               className="text-lg text-gray-300 max-w-3xl mx-auto"
               style={{ fontFamily: "'Work Sans', sans-serif" }}
             >
-              Application form for scholarship amount of Rs
-              45,000 annually for one successful candidate.
+              Scholarship application form for one successful candidate to receive
+              financial assistance covering one semester’s fee each year.
             </p>
           </motion.div>
         </div>
@@ -185,7 +184,7 @@ return (
               />
             </div>
             <figcaption className="mt-3 text-center text-sm text-gray-700">
-              Saheed-s-Azam Bhagat Singh
+              Shaheed-a-Azam Bhagat Singh
             </figcaption>
           </figure>
 
@@ -227,24 +226,29 @@ return (
               )}
             </div>
 
-            {/* Q2: Class */}
+            {/* Q2: Branch */}
             <div>
               <label
                 className="block mb-2 uppercase tracking-wide text-sm"
-                style={{ fontFamily: "'Work Sans', sans-serif" }}
+                style={{
+                  fontFamily: "'Work Sans', sans-serif",
+                }}
               >
-                Class *
+                Branch *
               </label>
               <input
-                {...register("class", {
-                  required: "Class is required",
+                {...register("branch", {
+                  required: "Branch is required",
                 })}
                 className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
-                style={{ fontFamily: "'Work Sans', sans-serif" }}
+                style={{
+                  fontFamily: "'Work Sans', sans-serif",
+                }}
               />
-              {errors.class && (
+
+              {errors.branch && (
                 <p className="text-red-600 text-sm mt-1">
-                  {errors.class.message}
+                  {errors.branch.message}
                 </p>
               )}
             </div>
@@ -374,41 +378,7 @@ return (
               )}
             </div>
 
-            {/* Q5: Branch */}
-            <div>
-              <label
-                className="block mb-2 uppercase tracking-wide text-sm"
-                style={{
-                  fontFamily: "'Work Sans', sans-serif",
-                }}
-              >
-                Branch *
-              </label>
-              <input
-                {...register("branch", {
-                  required: "Branch is required",
-                })}
-                className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black/20"
-                style={{
-                  fontFamily: "'Work Sans', sans-serif",
-
-                }}
-
-              />
-
-              {errors.branch && (
-
-                <p className="text-red-600 text-sm mt-1">
-
-                  {errors.branch.message}
-
-                </p>
-
-              )}
-
-            </div>
-
-            {/* Q6: Teacher Reference */}
+            {/* Q5: Teacher Reference */}
 
             <div>
 

@@ -3,46 +3,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, Play } from "lucide-react";
 import { useTranslation } from "../context/TranslationContext";
 
-interface GalleryImage {
-  url: string;
-  alt: string;
-  caption: string;
-  year?: string;
-}
-
 interface GalleryVideo {
   youtubeUrl: string;
   title: string;
   description: string;
   year?: string;
 }
-
-const galleryImages: GalleryImage[] = [
-  { 
-    url: "", 
-    alt: "Description of the image", 
-    caption: "Description of the image", 
-    year: "1995" 
-  },
-  { 
-    url: "", 
-    alt: "Description of the image", 
-    caption: "Description of the image", 
-    year: "1996" 
-  },
-  { 
-    url: "", 
-    alt: "Description of the image", 
-    caption: "Description of the image", 
-    year: "1998" 
-  },
-  { 
-    url: "", 
-    alt: "Description of the image", 
-    caption: "Description of the image", 
-    year: "2000" 
-  },
-];
 
 const galleryVideos: GalleryVideo[] = [
   {
@@ -354,45 +320,6 @@ function getPunjabiVideoTitle(title: string): string {
   return title;
 }
 
-function PhotoGrid({ images }: { images: GalleryImage[] }) {
-  const { language } = useTranslation();
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {images.map((image, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: index * 0.1, duration: 0.5 }}
-          className="relative overflow-hidden bg-gray-100 border border-black/15"
-        >
-          <div className="aspect-[4/3]">
-            <img
-              src={image.url}
-              alt={language === "en" ? image.alt : "ਤਸਵੀਰ ਦਾ ਵੇਰਵਾ"}
-              className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3">
-            <p
-              className="text-white text-sm font-medium"
-              style={{ fontFamily: "'Work Sans', sans-serif" }}
-            >
-              {language === "en" ? image.caption : "ਤਸਵੀਰ ਦਾ ਵੇਰਵਾ"}
-              {image.year && (
-                <span className="ml-2 text-white/60 text-xs">· {image.year}</span>
-              )}
-            </p>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
 function VideoSectionDropdown({
   section,
 }: {
@@ -565,29 +492,6 @@ export function GalleryPage() {
           </motion.p>
         </div>
       </motion.section>
-
-      {/* Photo Grid Section */}
-      <section className="py-12 md:py-16 px-4 md:px-6 lg:px-12">
-        <div className="container mx-auto max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="mb-8 md:mb-10">
-              <h2
-                className="text-2xl md:text-3xl mb-2"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              >
-                {t("gallery.photos.title")}
-              </h2>
-              <div className="w-12 h-0.5 bg-black" />
-            </div>
-            <PhotoGrid images={galleryImages} />
-          </motion.div>
-        </div>
-      </section>
 
       {/* Divider */}
       <div className="px-4 md:px-6 lg:px-12">

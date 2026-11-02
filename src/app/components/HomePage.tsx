@@ -228,7 +228,7 @@ export function HomePage() {
               {language === 'en' ? (
                 <>The <span className="italic">Biography</span></>
               ) : (
-                <>ਜੀਵਨੀ</>
+                <>{t('home.theFounders')}</>
               )}
             </h2>
             <div className="w-24 h-1 bg-black mx-auto mb-4"></div>

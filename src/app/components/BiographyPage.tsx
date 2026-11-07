@@ -334,10 +334,10 @@ function ImageCarousel({ images, autoplayInterval = 0, className = "" }: {
   };
 
   return (
-    <div className={`w-full mx-auto select-none ${className}`}>
+    <div className={`w-full max-w-[60rem] mx-auto select-none ${className}`}>
       <div
         className="relative overflow-hidden bg-gray-100 border border-black/15 shadow-md"
-        style={{ aspectRatio: "16/9" }}
+        style={{ aspectRatio: "4/5" }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -543,7 +543,7 @@ export function BiographyPage() {
 
               {/* Body paragraph after hero */}
               <div className="px-4 md:px-6 lg:px-12 pb-6">
-                <div className="container mx-auto max-w-5xl">
+                <div className="container mx-auto max-w-[60rem]">
                   <p
                     className="text-sm md:text-base text-gray-700 leading-relaxed"
                     style={{ fontFamily: "'Work Sans', sans-serif" }}
@@ -555,7 +555,7 @@ export function BiographyPage() {
 
               {/* FIRST CAROUSEL - Manual navigation only */}
               <div className="px-4 md:px-6 lg:px-12">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-[60rem]">
                   {chapter.carouselImages && chapter.carouselImages.length > 0 && (
                     <ImageCarousel 
                       images={chapter.carouselImages} 
@@ -568,7 +568,7 @@ export function BiographyPage() {
               {/* Closing paragraph between first and second carousel */}
               {chapter.closingParagraph && (
                 <div className="px-4 md:px-6 lg:px-12 pt-6 pb-6">
-                  <div className="container mx-auto max-w-5xl">
+                  <div className="container mx-auto max-w-[60rem]">
                     <p
                       className="text-sm md:text-base text-gray-700 leading-relaxed"
                       style={{ fontFamily: "'Work Sans', sans-serif" }}
@@ -582,7 +582,7 @@ export function BiographyPage() {
               {/* SECOND CAROUSEL - Manual navigation only */}
               {chapter.secondCarouselImages && chapter.secondCarouselImages.length > 0 && (
                 <div className="px-4 md:px-6 lg:px-12 mt-10">
-                  <div className="container mx-auto max-w-4xl">
+                  <div className="container mx-auto max-w-[60rem]">
                     {/* Germany title removed - check if any other title exists */}
                     {chapter.secondCarouselTitle && chapter.secondCarouselTitle !== "Germany" && (
                       <div>

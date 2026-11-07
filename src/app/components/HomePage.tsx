@@ -80,11 +80,6 @@ export function HomePage() {
       name: "Comrade Gurmail Hunjan",
       years: "1951-1989",
       role: "People's leader",
-      biography: [
-        "Comrade Gurmail Singh Hunjan was a people's leader. He lived, worked, and gave his life for the unity, integrity, and humanity of Punjab and India.",
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
-        "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      ]
     }
   ];
 
@@ -260,7 +255,7 @@ export function HomePage() {
 
                 {/* Excerpt */}
                 <p className="text-sm text-gray-700 leading-relaxed mb-6" style={{ fontFamily: "'Work Sans', sans-serif" }}>
-                  {founder.biography[0].substring(0, 150)}...
+                  {t("home.biographyExcerpt")}
                 </p>
 
                 {/* Read More Button */}
